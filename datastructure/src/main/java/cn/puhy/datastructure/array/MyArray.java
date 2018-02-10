@@ -26,10 +26,25 @@ public class MyArray {
 
     /**
      * 有序添加
+     *
      * @param value
      */
     public void sortedInsert(long value) {
+        //先遍历
+        int index;
+        for (index = 0; index < element; index++) {
+            //找到大于value的值的索引，需要插入它前面
+            if (array[index] > value) {
+                break;
+            }
+        }
 
+        //index后面的值都需要后移一位
+        for (int i = element; i > index; i--) {
+            array[i] = array[i - 1];
+        }
+        array[index] = value;
+        element++;
     }
 
     /**
@@ -41,6 +56,32 @@ public class MyArray {
             System.out.print(array[i] + " ");
         }
         System.out.println("]");
+    }
+
+    /**
+     * 二分查找
+     *
+     * @param value
+     * @return
+     */
+    public int binarySearch(long value) {
+        int min = 0;
+        int max = element;
+        while (max >= min) {
+            int mid = (min + max) / 2;
+            if (array[mid] == value) {
+                return mid;
+            }
+            //左边查找
+            else if (array[mid] > value) {
+                max = mid - 1;
+            }
+            //右边查找
+            else {
+                min = mid + 1;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -103,21 +144,29 @@ public class MyArray {
 
     public static void main(String[] args) {
         MyArray m = new MyArray();
-        m.insert(1000);
-        m.insert(1001);
-        m.insert(999);
-        m.insert(1234);
-        m.insert(987);
+//        m.insert(1000);
+//        m.insert(1001);
+//        m.insert(999);
+//        m.insert(1234);
+//        m.insert(987);
+//
+//        m.display();
+//        System.out.println(m.search(999));
+//
+//        System.out.println(m.get(1));
+//
+//        m.delete(1);
+//        m.display();
+//
+//        m.update(1, 998);
+//        m.display();
 
+        m.sortedInsert(10);
+        m.sortedInsert(9);
+        m.sortedInsert(2);
+        m.sortedInsert(14);
         m.display();
-        System.out.println(m.search(999));
 
-        System.out.println(m.get(1));
-
-        m.delete(1);
-        m.display();
-
-        m.update(1, 998);
-        m.display();
+        System.out.println(m.binarySearch(9));
     }
 }
