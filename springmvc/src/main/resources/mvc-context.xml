@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:websocket="http://www.springframework.org/schema/websocket"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+
+    <context:component-scan base-package="cn.puhy.springmvc.controller"/>
+
+    <!-- 文件上传解析器 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+          p:defaultEncoding="UTF-8"
+          p:maxUploadSize="10240000"/>
+
+    <!-- 视图解析器 -->
+    <!-- 将视图名解析为/view/<viewName>.jsp的视图对象 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/views/" p:suffix=".jsp"/>
+
+    <!-- 处理器适配器，引用HttpMessageConverter列表 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"
+          p:messageConverters-ref="messageConverters"
+          p:webBindingInitializer-ref="bindingInitializer"/>
+
+    <!-- 自定义转换器，需要装配到RequestMappingHandlerAdapter -->
+    <bean id="bindingInitializer" class="cn.puhy.springmvc.domain.BindingInitializer"/>
+
+
+    <!-- HttpMessageConverter列表，前面4种为默认的 -->
+    <!-- 将请求信息转换为对象，或将对象转换为响应信息 -->
+    <!-- MarshallingHttpMessageConverter为处理XML的转换器 -->
+    <!-- MappingJackson2HttpMessageConverter为处理JSON的转换器 -->
+    <util:list id="messageConverters">
+        <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+        <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+        <bean class="org.springframework.http.converter.BufferedImageHttpMessageConverter"/>
+        <bean class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
+
+        <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter"
+              p:marshaller-ref="xmlMarshaller" p:unmarshaller-ref="xmlMarshaller"/>
+
+        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+    </util:list>
+
+    <!-- 声明Marshaller，使用XStream技术 -->
+    <bean id="xmlMarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller"
+          p:streamDriver-ref="staxDriver"/>
+
+    <!-- 使用STAX对XML消息进行处理 -->
+    <bean id="staxDriver" class="com.thoughtworks.xstream.io.xml.StaxDriver"/>
+
+    <!-- 自定义转换器 -->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="cn.puhy.springmvc.domain.StringToUserConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <!-- 格式化转换器 -->
+    <bean id="formattingConversionService"
+          class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="cn.puhy.springmvc.domain.StringToUserConverter"/>
+            </set>
+        </property>
+    </bean>
+
+    <!-- 将myWebSocketHandler映射到/websocket -->
+    <websocket:handlers>
+        <websocket:mapping path="/websocket" handler="myWebSocketHandler"/>
+    </websocket:handlers>
+
+    <!-- 声明WebSocketHandler -->
+    <bean id="myWebSocketHandler" class="cn.puhy.springmvc.handler.MyWebSocketHandler"/>
+
+    <!-- 一定要加 -->
+    <!-- conversion-service为类型转换器 -->
+    <mvc:annotation-driven conversion-service="formattingConversionService"/>
+</beans>
