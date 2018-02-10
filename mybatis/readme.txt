@@ -1,0 +1,10 @@
+SysUserMapper.xml				xml配置方式
+SysRoleMapper.java				注解
+DynamicSqlMapper.xml				动态SQL
+generatorConfig.xml				代码生成器配置
+AdvancedQueryMapper.xml			高级查询
+SysRoleMapper.xml				使用枚举类型
+SysUserMapper.xml				xml中配置二级缓存
+ehcache.xml						使用ehcache缓存
+MyInterceptor.java				拦截器
+PageHelperTest.java				分页插件

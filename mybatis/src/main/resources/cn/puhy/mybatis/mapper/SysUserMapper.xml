@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为接口的包名 -->
+<mapper namespace="cn.puhy.mybatis.mapper.SysUserMapper">
+
+	<!-- 配置二级缓存，二级缓存存在于SqlSessionFactory的生命周期中 -->
+	<!-- eviction为收回策略，LRU：最近最少使用的，FIFO：先进先出，SOFT：软引用，WEAK：弱引用 -->
+	<!-- flushInterval为刷新间隔，单位为毫秒 -->
+	<!-- size为缓存数量 -->
+	<!-- readOnly为只读，只读的缓存会给所有调用者返回缓存对象的相同实例，缓存对象必须实现Serializable接口 -->
+	<cache eviction="FIFO" flushInterval="60000" size="512" readOnly="false" />
+	
+	<!-- 使用EhChache缓存 -->
+	<!-- <cache type="org.mybatis.caches.ehcache.EhcacheCache" /> -->
+	
+	<!-- resultMap为对象的属性和查询结果列的对应关系 -->
+	<!-- type为映射到的java类 -->
+	<!-- id必须唯一 -->
+	<!-- extends配置当前resultmap继承其他的resultmap -->
+	<resultMap type="SysUser" id="sysUserMap">
+	
+		<!-- property为java对象字段 -->
+		<!-- column为列名 -->
+		<!-- jdbcType为列对应的数据库类型 -->
+		<id property="id" column="id" />
+		<result property="userName" column="user_name" />
+		<result property="userPassword" column="user_password" />
+		<result property="userEmail" column="user_email" />
+		<result property="userInfo" column="user_info" />
+		<result property="headImg" column="head_img" jdbcType="BLOB" />
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<!-- id为接口中的参数名 -->
+	<select id="selectById" resultMap="sysUserMap">
+		select * from sys_user where id = #{id}
+	</select>
+	
+	<select id="selectAll" resultMap="sysUserMap">
+		select * from sys_user
+	</select>
+	
+	<!-- 多表查询 -->
+	<select id="selectRolesByUserId" resultType="cn.puhy.mybatis.model.SysRole">
+		select r.id, r.role_name, r.enabled, r.create_by, r.create_time, u.user_name as "sysUser.userName", u.user_email as "sysUser.userEmail"
+			from sys_user u 
+			inner join sys_user_role ur on u.id = ur.user_id
+			inner join sys_role r on ur.role_id = r.id
+			where u.id = #{userId}
+	</select>
+	
+	<!-- useGeneratedKeys取出由数据库生成的主键 -->
+	<!-- keyProperty 获得主键值赋值给keyProperty配置的属性 -->
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into sys_user(user_name, user_password, user_email, user_info, head_img, create_time) 
+			values(#{userName}, #{userPassword}, #{userEmail}, #{userInfo}, #{headImg, jdbcType=BLOB}, #{createTime, jdbcType=TIMESTAMP})
+	</insert>
+	
+	<!-- 使用selectKey返回主键的值 -->
+	<insert id="insertSelectKey">
+		insert into sys_user(user_name, user_password, user_email, user_info, head_img, create_time) 
+			values(#{userName}, #{userPassword}, #{userEmail}, #{userInfo}, #{headImg, jdbcType=BLOB}, #{createTime, jdbcType=TIMESTAMP})
+		
+		<!-- mysql order属性值为AFTER，语句为SELECT LAST_INSERT_ID() -->
+		<!-- oracle order属性值为BEFORE，语句为SELECT SEQ_ID.nextval from dual -->
+		<selectKey keyColumn="id" resultType="int" keyProperty="id" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	
+	<!-- 更新 -->
+	<update id="updateById">
+		update sys_user set 
+			user_name = #{userName},
+			user_password = #{userPassword},
+			user_email = #{userEmail},
+			user_info = #{userInfo},
+			head_img = #{headImg, jdbcType=BLOB},
+			create_time = #{createTime, jdbcType=TIMESTAMP} 
+		where id = #{id}
+	</update>
+	
+	<!-- 删除 -->
+	<delete id="deleteById">
+		delete from sys_user where id = #{id}
+	</delete>
+	
+	<!-- 多个参数的查询,接口的参数需要加@Param -->
+	<select id="selectRolesByUserIdAndEnabled" resultType="cn.puhy.mybatis.model.SysRole">
+		select r.id, r.role_name, r.enabled, r.create_by, r.create_time 
+			from sys_user u 
+			inner join sys_user_role ur on u.id = ur.user_id
+			inner join sys_role r on ur.role_id = r.id
+			where u.id = #{userId} and r.enabled = #{enabled}
+	</select>
+	
+	<!-- SQL代码段 -->
+	<sql id="sysUserColumns">${alias}.id, ${alias}.user_name, ${alias}.user_password, 
+			${alias}.user_email, ${alias}.user_info, ${alias}.head_img, ${alias}.create_time</sql>
+			
+	<select id="selectBySqlSegment" resultType="SysUser">
+  		select
+  		<!-- refid为SQL代码段ID -->
+    		<include refid="sysUserColumns">
+    			<property name="alias" value="t"/>
+    		</include>
+  		from sys_user t
+	</select>		
+</mapper>

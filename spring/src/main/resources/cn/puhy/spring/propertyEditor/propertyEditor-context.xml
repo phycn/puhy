@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- 配置自动注册属性编辑器的CustomEditorConfigurer -->
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<!-- 这里必须为customEditors，因为customEditors为CustomEditorConfigurer的字段 -->
+		<property name="customEditors">
+			<map>
+				<!-- key为属性类型，value为属性编辑器 -->
+				<entry key="cn.puhy.spring.propertyEditor.Bean1" value="cn.puhy.spring.propertyEditor.Bean2Editor">
+					
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="bean2" class="cn.puhy.spring.propertyEditor.Bean2">
+		<property name="str1" value="phy" />
+		<!-- 将会用属性编辑器完成属性填充 -->
+		<property name="bean1" value="蒲红宇,哈哈哈" />
+	</bean>		
+</beans>

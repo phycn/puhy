@@ -1,0 +1,30 @@
+ClassTest的全部构造器：
+private phy.reflection.ClassTest()
+public phy.reflection.ClassTest(java.lang.String)
+-----------------------------------------------------
+ClassTest的全部public构造器：
+public phy.reflection.ClassTest(java.lang.String)
+-----------------------------------------------------
+ClassTest的全部public方法：
+public static void phy.reflection.ClassTest.main(java.lang.String[]) throws java.lang.Exception
+public void phy.reflection.ClassTest.info(java.lang.String)
+public void phy.reflection.ClassTest.info()
+public final void java.lang.Object.wait(long,int) throws java.lang.InterruptedException
+public final native void java.lang.Object.wait(long) throws java.lang.InterruptedException
+public final void java.lang.Object.wait() throws java.lang.InterruptedException
+public boolean java.lang.Object.equals(java.lang.Object)
+public java.lang.String java.lang.Object.toString()
+public native int java.lang.Object.hashCode()
+public final native java.lang.Class java.lang.Object.getClass()
+public final native void java.lang.Object.notify()
+public final native void java.lang.Object.notifyAll()
+-----------------------------------------------------
+ClassTest里带一个字符串参数的info方法为：public void phy.reflection.ClassTest.info(java.lang.String)
+-----------------------------------------------------
+ClassTest的全部注释：
+-----------------------------------------------------
+ClassTest的全部内部类：
+class phy.reflection.ClassTest$Inner
+class phy.reflection.ClassTest$Methods
+-----------------------------------------------------
+inClazz的外部类：class phy.reflection.ClassTest

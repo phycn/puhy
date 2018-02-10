@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- properties指定需要解析的外部属性文件,有resource和url两个属性，只能使用一个 -->
+	<!-- <properties resource="" /> -->
+	<!-- <classPathEntry location="F:\.m2\repository\mysql\mysql-connector-java\5.1.38\mysql-connector-java-5.1.38.jar"/> -->
+
+	<!-- context指定生成一组对象的环境 -->
+	<!-- targetRuntime指定生成的代码的运行时环境，MyBatis3为默认值，还有MyBatis3Simple -->
+	<!-- defaultModelType定义如何生成实体类，conditional为默认值，表的主键只有一个字段就不会为该字段生成单独的实体类，而是合并到基本实体类中
+		flat只为每张表生成一个实体类，hierarchical会为主键和BLOB字段分别生成单独的实体类 -->
+	<context id="MySqlContext" targetRuntime="MyBatis3"
+		defaultModelType="flat">
+		
+		<!-- beginningDelimiter和endingDelimiter为分隔符，将其中的内容作为一个整体 -->
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<!-- 设置生成的java文件的编码 -->
+		<property name="javaFileEncoding" value="UTF-8" />
+		
+		<!-- 插件 -->
+		<!-- <plugin type=""></plugin> -->
+
+		<!-- 配置如何生成注释信息,type为可选属性，自定义注释生成 -->
+		<commentGenerator type="">
+			<!-- suppressAllComments为阻止生成注释 -->
+			<property name="suppressAllComments" value="true" />
+			<!-- suppressDate为阻止生成的注释包含时间戳 -->
+			<property name="suppressDate" value="true" />
+			<!-- addRemarkComments为是否添加数据库表的备注信息 -->
+			<property name="addRemarkComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/phy" userId="root"
+			password="root">
+		</jdbcConnection>
+		
+		<!-- 指定JDBC类型和java类型如何转换 -->
+		<javaTypeResolver>
+			
+		</javaTypeResolver>
+
+
+		<!-- 控制生成的实体类 -->
+		<!-- targetPackage为生成实体类存放的包名 -->
+		<!-- targetProject指定目标项目路径，相对路径或绝对路径 -->
+		<javaModelGenerator targetPackage="cn.puhy.mybatis.generator"
+			targetProject="src/main/java">
+			<!-- trimStrings为是否对数据库查询结果进行trim操作 -->
+			<property name="trimStrings" value="true" />
+			<!-- rootClass为设置所有实体类的基类 -->
+			<!-- <property name="rootClass" value="tk.mybatis.simple.model.BaseEntity" /> -->
+		</javaModelGenerator>
+
+		<!-- 生成SQL映射文件 -->
+		<!-- targetPackage为存放的包名 -->
+		<!-- targetProject为指定目标项目路径 -->
+		<sqlMapGenerator targetPackage=""
+			targetProject="src/main/resources" />
+
+		<!-- 生成mapper接口 -->
+		<!-- type为mapper接口生成器，可以自定义，XMLMAPPER为所有的方法都在XML中 -->
+		<!-- targetPackage为生成接口存放的包名 -->
+		<!-- targetProject为目标项目路径 -->
+		<!-- <javaClientGenerator type="XMLMAPPER"
+			targetPackage="test.dao" targetProject="src\main\java" /> -->
+
+		<!-- tableName为表名 -->
+		<table tableName="sys_user">
+			<generatedKey column="id" sqlStatement="MySql" />
+		</table>
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true" 
+	monitoring="autodetect" dynamicConfig="true">
+	
+	<diskStore path="/Users/puhongyu/phy/tmp" />
+	
+	<!-- copyOnRead，从缓存中读取数据是返回对象的引用还是复制一个对象，与xml缓存配置中的readOnly相似 -->
+	<!-- copyOnWrite，写入缓存时是直接缓存对象的引用还是复制一个对象然后缓存 -->
+	<!-- 使用可读写需要都设置为true -->
+	<defaultCache maxElementsInMemory="1000"
+					eternal="false"
+					copyOnRead="true"
+					copyOnWrite="true"
+					timeToIdleSeconds="3600"
+					timeToLiveSeconds="3600"
+					overflowToDisk="true"
+					diskPersistent="true" />
+</ehcache>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+    <context:component-scan base-package="cn.puhy.spring.transaction.xmlcfg"/>
+    <!--<import resource="classpath:cn/puhy/spring/transaction/datasource.xml"/>-->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+          destroy-method="close" p:driverClassName="com.mysql.jdbc.Driver"
+          p:url="jdbc:mysql://localhost:3306/phy" p:username="root"
+          p:password="root"/>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"
+          p:dataSource-ref="dataSource"/>
+
+    <!--事务管理器-->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+          p:dataSource-ref="dataSource"/>
+
+    <aop:config>
+        <!--定义切点-->
+        <aop:pointcut id="serviceMethod"
+                      expression="execution(* cn.puhy.spring.transaction.xmlcfg..*(..))"/>
+        <!--定义切面，引用事务增强-->
+        <aop:advisor pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
+    </aop:config>
+
+    <!--事务增强-->
+    <!--transaction-manager定义事务管理器-->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <!--name 方法名-->
+            <!--read-only 是否只读-->
+            <!--propagation 事务传播行为-->
+            <!--isolation 事务隔离级别-->
+            <!--timeout 事务超时时间，单位为秒，-1由底层的事务系统决定-->
+            <!--rollback-for 触发事务回滚的Exception-->
+            <!-- no-rollback-for 不触发事务回滚的Exception -->
+            <tx:method name="get*" read-only="true" propagation="REQUIRED" isolation="DEFAULT" timeout="-1"/>
+            <tx:method name="add*" rollback-for="Exception"/>
+            <tx:method name="update*"/>
+            <tx:method name="insert" read-only="false" no-rollback-for="Exception" />
+        </tx:attributes>
+    </tx:advice>
+</beans>

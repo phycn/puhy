@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	
+	<!-- depends-on设置依赖，必须依赖的bean实例化后才能创建 -->
+	<bean id="manager" class="cn.puhy.spring.beanRelation.dependence.CacheManager" depends-on="sysInit"/>
+	<bean id="sysInit" class="cn.puhy.spring.beanRelation.dependence.SysInit"/>
+	
+</beans>

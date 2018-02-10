@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	
+	<bean id="zhoujielun" class="cn.puhy.spring.aop.aspect.Zhoujielun" />
+	<bean id="liudehua" class="cn.puhy.spring.aop.aspect.Liudehua" />
+	
+	<!-- 增强 -->
+	<bean id="myBeforeAdvice" class="cn.puhy.spring.aop.aspect.MyBeforeAdvice" />
+	
+	<!-- 切面，p:advice-ref向切面注入一个前置增强 -->
+	<bean id="myAdvisor" class="cn.puhy.spring.aop.aspect.MyAdvisor" p:advice-ref="myBeforeAdvice" />
+	
+	<!-- 通过父bean定义公共的配置信息 -->
+	<bean id="parent" abstract="true" class="org.springframework.aop.framework.ProxyFactoryBean" 
+		p:interceptorNames="myAdvisor"
+		p:proxyTargetClass="true" />
+	
+	<!-- 代理 -->
+	<bean id="zhoujielunTarget" parent="parent" p:target-ref="zhoujielun" />
+	<bean id="liudehuaTarget" parent="parent" p:target-ref="liudehua" />	
+	
+	<!--  -->
+	<!-- 正则表达式匹配切面 -->
+	<bean id="regexAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" p:advice-ref="myBeforeAdvice">
+		<!-- 用正则表达式定义目标类方法名的匹配串 -->
+		<property name="patterns">
+			<list>
+				<value>.*</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 代理 -->
+	<bean id="regex" class="org.springframework.aop.framework.ProxyFactoryBean" 
+		p:interceptorNames="regexAdvisor"
+		p:target-ref="liudehua"
+		p:proxyTargetClass="true" />
+	
+		
+	<!-- ###############################动态切面############################### -->
+	<!-- 动态切面，这里使用DefaultPointcutAdvisor -->
+	<bean id="dynamicAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" 
+		p:pointcut-ref="myDynamicPointcut" 
+		p:advice-ref="myBeforeAdvice" />
+	
+	<bean id="myDynamicPointcut" class="cn.puhy.spring.aop.aspect.MyDynamicPointcut" />
+	
+	<!-- 代理 -->
+	<bean id="myDynamic" class="org.springframework.aop.framework.ProxyFactoryBean" 
+		p:interceptorNames="dynamicAdvisor"
+		p:target-ref="zhoujielun"
+		p:proxyTargetClass="true" />
+	<!-- ###############################动态切面############################### -->
+	
+	
+	<!-- ###############################流程切面############################### -->
+	
+	<!-- 流程切点 -->
+	<bean id="myFlowPointcut" class="org.springframework.aop.support.ControlFlowPointcut">
+		<!-- 指定流程切点的类 -->
+		<constructor-arg type="java.lang.Class" value="cn.puhy.spring.aop.aspect.Puhongyu" />
+		<!-- 指定流程切点的方法，由这个方法调用的切点指定方法会调用增强 -->
+		<constructor-arg type="java.lang.String" value="hear" />
+	</bean>
+	
+	<!-- 流程切面 -->
+	<bean id="myFlowAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" 
+		p:pointcut-ref="myFlowPointcut"
+		p:advice-ref="myBeforeAdvice" />
+	
+	<!-- 代理 -->	
+	<bean id="myFlowProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="myFlowAdvisor"
+		p:target-ref="zhoujielun"
+		p:proxyTargetClass="true" />
+		
+	
+	<!-- ###############################复合切面############################### -->
+	<!-- 复合切点 -->
+	<bean id="myComposablePointcut" class="cn.puhy.spring.aop.aspect.MyComposablePointcut"/>
+	
+	<!-- 复合切面 -->
+	<bean id="myComposableAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor" 
+		p:pointcut-="#{myComposablePointcut.composablePointcut}"
+		p:advice-ref="myBeforeAdvice" />
+		
+	<!-- 代理 -->	
+	<bean id="myComposableProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="myComposableAdvisor"
+		p:target-ref="zhoujielun"
+		p:proxyTargetClass="true" />
+		
+	<!-- ###############################引介切面############################### -->
+	<bean id="myIntroductionAdvisor" class="org.springframework.aop.support.DefaultIntroductionAdvisor">
+		<constructor-arg>
+			<bean class="cn.puhy.spring.aop.advice.MyMonitor" />
+		</constructor-arg>
+	</bean>
+	
+	<bean id="myIntroductionProxy" class="org.springframework.aop.framework.ProxyFactoryBean"
+		p:interceptorNames="myIntroductionAdvisor"
+		p:target-ref="zhoujielun"
+		p:proxyTargetClass="true" />
+		
+	
+	<!-- 基于Bean配置名规则的自动代理创建器，为特定配置名的bean创建代理 -->	
+	<!--<bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator"-->
+		<!--p:beanNames="*jielun"-->
+		<!--p:interceptorNames="myBeforeAdvice"-->
+		<!--p:optimize="true" />-->
+	
+	<!-- 基于Advisor匹配机制的自动代理创建器，扫描所有Advisor，自动将Advisor应用到匹配的bean中 -->	
+	<!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" />-->
+</beans>

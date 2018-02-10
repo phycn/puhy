@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+	
+	<!-- 扫描类包下注解定义的bean -->
+	<!-- base-package为基类包 -->
+	<!-- resource-pattern为进行过滤 -->
+	<!-- use-default-filters为true表示默认会对@Component,@Controller,@Service,@Reposity的bean扫描 -->
+	<context:component-scan base-package="cn.puhy.spring.annotation" resource-pattern="*.class" use-default-filters="true">
+	
+		<!-- context:include-filter表示要包含的类，regex为正则表达式过滤 -->
+		<!-- <context:include-filter type="regex" expression="cn\.puhy\.spring\.annotation\.*2" />
+		<context:include-filter type="regex" expression="cn\.puhy\.spring\.annotation\.*3" /> -->
+		
+		<!-- context:exclude-filter表示要排除的类，aspectj为aspectj过滤 -->
+		<!-- <context:exclude-filter type="aspectj" expression="" /> -->
+	</context:component-scan>
+</beans>

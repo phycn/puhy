@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- 前置增强类 -->
+	<bean id="greetingBeforeAdvice" class="cn.puhy.spring.aop.advice.GreetingBeforeAdvice" />
+	<!-- 后置增强 -->
+	<bean id="greetingAfterAdvice" class="cn.puhy.spring.aop.advice.GreetingAfterAdvice" />
+	<!-- 环绕增强 -->
+	<bean id="greetingInterceptor" class="cn.puhy.spring.aop.advice.GreetingInterceptor" />
+	<!-- 异常抛出增强 -->
+	<bean id="greetingThrowAdvice" class="cn.puhy.spring.aop.advice.GreetingThrowAdvice" />
+	<!-- 引介增强 -->
+	<bean id="myMonitor" class="cn.puhy.spring.aop.advice.MyMonitor" />
+	
+	<bean id="target" class="cn.puhy.spring.aop.advice.NaiveWaiter" />
+	
+	<!-- proxyInterfaces为代理的接口，interceptorNames为使用的增强，target为对哪个bean进行代理，singleton为是否单例，optimize为强制使用CGLib代理，proxyTargetClass为是否对类进行代理 -->
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean" 
+		p:proxyInterfaces="cn.puhy.spring.aop.advice.Waiter" 
+		p:interceptorNames="greetingBeforeAdvice, greetingAfterAdvice, greetingInterceptor, greetingThrowAdvice" 
+		p:target-ref="target" 
+		p:singleton="true" 
+		p:optimize="true"
+		p:proxyTargetClass="true" />
+	
+	<!-- 引介增强配置，proxyInterfaces为引介增强所实现的接口 -->
+	<bean id="introducing" class="org.springframework.aop.framework.ProxyFactoryBean" 
+		p:proxyInterfaces="cn.puhy.spring.aop.advice.Monitorable" 
+		p:interceptorNames="myMonitor" 
+		p:target-ref="target" 
+		p:singleton="true" 
+		p:optimize="true"
+		p:proxyTargetClass="true" />	
+	
+</beans>

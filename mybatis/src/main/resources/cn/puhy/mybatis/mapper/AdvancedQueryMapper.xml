@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为接口的包名 -->
+<mapper namespace="cn.puhy.mybatis.mapper.AdvancedQueryMapper">
+	<resultMap type="cn.puhy.mybatis.model.SysUser" id="sysUserMap">
+		<id property="id" column="id" />
+		<result property="userName" column="user_name" />
+		<result property="userPassword" column="user_password" />
+		<result property="userEmail" column="user_email" />
+		<result property="userInfo" column="user_info" />
+		<result property="headImg" column="head_img" jdbcType="BLOB" />
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<!-- 使用extends继承其他resultMap -->
+	<resultMap type="cn.puhy.mybatis.model.SysUser" id="sysUserRoleMap1" extends="sysUserMap">
+		<!-- sys_role表的id列和sys_user的重复，列名改为sysRole_id，SQL语句中要设置别名 -->
+		<result property="sysRole.id" column="sysRole_id" />
+		<result property="sysRole.roleName" column="role_name" />
+		<result property="sysRole.enabled" column="enabled" />
+		<result property="sysRole.createBy" column="create_by" />
+		<result property="sysRole.createTime" column="sysRole_create_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<!-- 使用association标签 -->
+	<resultMap type="cn.puhy.mybatis.model.SysUser" id="sysUserRoleMap2" extends="sysUserMap">
+		
+		<!-- association中property为实体类中的属性名，也就是在SysUser中的字段，columnPrefix为查询列的前缀，子标签中result的column可以省略前缀，resultMap可以使用现有的resultMap -->
+		<association property="sysRole" columnPrefix="role_" javaType="cn.puhy.mybatis.model.SysRole">
+			<result property="id" column="id" />
+			<result property="roleName" column="role_name" />
+			<result property="enabled" column="enabled" />
+			<result property="createBy" column="create_by" />
+			<result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+		</association>
+	</resultMap>
+	
+	<!-- association标签的嵌套查询 -->
+	<resultMap type="cn.puhy.mybatis.model.SysUser" id="sysUserRoleMap3" extends="sysUserMap">
+		
+		<!-- column为将主查询中列的结果作为嵌套查询的参数，fetchType为数据加载方式，lazy为延迟加载，需要用到时才加载，select为另一个映射查询的id -->
+		<association property="sysRole" fetchType="lazy" column="{id=role_id}" select="cn.puhy.mybatis.mapper.SysRoleMapper.selectRoleById" />
+	</resultMap>
+	
+	
+	<!-- 1对多映射 -->
+	<resultMap type="cn.puhy.mybatis.model.OneToManySysUser" id="sysUserRoleListMap" extends="sysUserMap">
+		
+		<!-- collection中property为实体类中的属性名，columnPrefix为查询列的前缀，子标签中result的column可以省略前缀，resultMap可以使用现有的resultMap，ofType为List集合中的类型 -->
+		<collection property="sysRoleList" columnPrefix="role_" ofType="cn.puhy.mybatis.model.SysRole">
+			<result property="id" column="id" />
+			<result property="roleName" column="role_name" />
+			<result property="enabled" column="enabled" />
+			<result property="createBy" column="create_by" />
+			<result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+		</collection>
+	</resultMap>
+	
+	
+	<select id="selectUserAndRole1" resultMap="sysUserRoleMap1">
+		select u.*, r.id sysRole_id, r.role_name, r.enabled, r.create_by, r.create_time sysRole_create_time from sys_user u
+		inner join sys_user_role ur on u.id=ur.user_id 
+		inner join sys_role r on ur.role_id=r.id 
+		where u.id=#{id}
+	</select>
+	
+	<select id="selectUserAndRole2" resultMap="sysUserRoleMap2">
+		select u.*, r.id role_id, r.role_name role_role_name, r.enabled role_enabled, r.create_by role_create_by, r.create_time role_create_time from sys_user u
+		inner join sys_user_role ur on u.id=ur.user_id 
+		inner join sys_role r on ur.role_id=r.id 
+		where u.id=#{id}
+	</select>
+	
+	<select id="selectUserAndRole3" resultMap="sysUserRoleMap3">
+		select u.*, ur.role_id from sys_user u 
+		inner join sys_user_role ur on u.id = ur.user_id 
+		where u.id = #{id}
+	</select>
+	
+	
+	<select id="selectUserAndRoleList" resultMap="sysUserRoleListMap">
+		select u.*, r.id role_id, r.role_name role_role_name, r.enabled role_enabled, r.create_by role_create_by, r.create_time role_create_time from sys_user u
+		inner join sys_user_role ur on u.id=ur.user_id 
+		inner join sys_role r on ur.role_id=r.id 
+		where u.id = #{id}
+	</select>
+</mapper>

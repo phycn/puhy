@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为接口的包名 -->
+<mapper namespace="cn.puhy.mybatis.mapper.SysRoleMapper">
+	<resultMap type="cn.puhy.mybatis.model.SysRole" id="sysRoleMap">
+		<id property="id" column="id" />
+		<result property="roleName" column="role_name" />
+		<result property="enabled" column="enabled" />
+		<result property="createBy" column="create_by" />
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<select id="selectRoleById" resultMap="sysRoleMap">
+		select * from sys_role where id = #{id}
+	</select>
+	
+	<!-- 使用枚举对象 -->
+	<resultMap type="cn.puhy.mybatis.model.EnumSysRole" id="enumSysRoleMap">
+		<id property="id" column="id" />
+		<result property="roleName" column="role_name" />
+		<result property="enabled" column="enabled" />
+		<result property="createBy" column="create_by" />
+		<result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
+	</resultMap>
+	
+	<select id="selectByEnabled" resultMap="enumSysRoleMap">
+		select * from sys_role where enabled=#{enabled}
+	</select>
+</mapper>

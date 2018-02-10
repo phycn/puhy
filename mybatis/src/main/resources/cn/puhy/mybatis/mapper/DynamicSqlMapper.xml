@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为接口的包名 -->
+<mapper namespace="cn.puhy.mybatis.mapper.DynamicSqlMapper">
+
+	<!-- 在where条件中使用if -->
+	<select id="selectByUser" resultType="cn.puhy.mybatis.model.SysUser">
+		select id, user_name, user_password, user_email, user_info, head_img, create_time
+			from sys_user where 1=1
+		<if test="userName != null and userName != ''">
+			and user_name like concat('%', #{userName}, '%')
+		</if>
+		<if test="userEmail != null and userEmail != ''">
+			and user_email = #{userEmail}
+		</if>
+	</select>
+	
+	<!-- update中使用if -->
+	<update id="updateByIdSelective">
+		update sys_user set 
+		<if test="userName != null and userName != ''">
+			user_name = #{userName},
+		</if>
+		<if test="userPassword != null and userPassword != ''">
+			user_password = #{userPassword},
+		</if>
+		id = #{id} where id = #{id}	
+	</update>
+	
+	<!-- insert中使用if -->
+	<insert id="insertSelective" useGeneratedKeys="true" keyProperty="id">
+		insert into sys_user(user_name, user_password,
+			<if test="userEmail != null and userEmail != ''">
+				user_email,
+			</if>
+			user_info, head_img, create_time)
+		values (#{userName}, #{userPassword},
+			<if test="userEmail != null and userEmail != ''">
+				#{userEmail},
+			</if>
+			#{userInfo}, #{headImg, jdbcType=BLOB}, #{createTime, jdbcType=TIMESTAMP})
+	</insert>
+	
+	<!-- 使用choose,when相当于if else -->
+	<select id="selectChoose" resultType="cn.puhy.mybatis.model.SysUser">
+		select * from sys_user where 1 = 1
+		<choose>
+			<when test="id != null">
+				and id = #{id}
+			</when>
+			<when test="userName != null and userName != ''">
+				and user_name = #{userName}
+			</when>
+			<otherwise>
+				and 1 = 2
+			</otherwise>
+		</choose>
+	</select>
+	
+	<!-- 使用where标签,避免了1=1写法 -->
+	<select id="selectByUserWhere">
+		select * from sys_user
+		<where>
+			<if test="userName != null and userName != ''">
+				and user_name like concat('%', #{userName}, '%')
+			</if>
+			<if test="userEmail != null and userEmail != ''">
+				and user_email = #{userEmail}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 使用set标签 -->
+	<update id="updateByIdSelectiveSet">
+		update sys_user
+		<set>
+			<if test="userName != null and userName != ''">
+				user_name = #{userName},
+			</if>
+			<if test="userPassword != null and userPassword != ''">
+				user_password = #{userPassword},
+			</if>
+			id = #{id},
+		</set>
+		where id = #{id}	
+	</update>
+	
+	<!-- foreach实现in集合 -->
+	<!-- collection 参数类型，list为List，array为数组，_parameter为map -->
+	<!-- open 整个循环开头的字符串 -->
+	<!-- close 整个循环结尾的字符串 -->
+	<!-- separator 每次循环的分隔符 -->
+	<!-- item 变量名 -->
+	<!-- index为索引 -->
+	<select id="selectByIdList" resultType="cn.puhy.mybatis.model.SysUser">
+		select * from sys_user where id in
+		<foreach collection="list" open="(" close=")" separator="," item="id" index="i">
+			#{id}
+		</foreach>
+	</select>
+	
+	<!-- foreach实现批量插入 -->
+	<insert id="insertList">
+		insert into sys_user(user_name, user_password, user_email, user_info, head_img, create_time) values 
+		<foreach collection="list" item="user" separator=",">
+			(#{user.userName}, #{user.userPassword}, #{user.userEmail}, #{user.userInfo}, 
+				#{user.headImg, jdbcType=BLOB}, #{user.createTime, jdbcType=TIMESTAMP})
+		</foreach>
+	</insert>
+	
+	<!-- foreach实现动态update,参数类型为map -->
+	<update id="updateByMap">
+		update sys_user set 
+		<foreach collection="_parameter" item="val" index="key" separator=",">
+			${key} = #{val}
+		</foreach>
+		where id = #{id}
+	</update>
+	
+	<!-- 多数据库支持的查询 -->
+	<select id="selectMultiDatabase" resultType="cn.puhy.mybatis.model.SysUser">
+		select * from sys_user
+		<where>
+			<!-- mysql数据库 -->
+			<if test="_databaseId == 'mysql'">
+				and user_name like concat('%', #{userName}, '%')
+			</if>
+			<if test="_databaseId == 'oracle'">
+				and user_name like '%'||#{userName}||'%'
+			</if>
+		</where>
+	</select>
+</mapper>

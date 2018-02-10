@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 配置属性值，通过${属性名获取}，后面的数据库配置就是通过这种方式 -->
+	<properties resource="config.properties">
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+		<!-- 占位符指定默认值 -->
+		<property
+			name="org.apache.ibatis.parsing.PropertyParser.enable-default-value"
+			value="true" />
+	</properties>
+
+	<settings>
+		<!-- 指定使用log4j输出日志 -->
+		<setting name="logImpl" value="LOG4J" />
+		<!-- 将以下划线方式命名的数据库列映射成java对象的驼峰式命名，比如：user_name映射成userName -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<!-- 完整加载 -->
+		<setting name="aggressiveLazyLoading" value="false" />
+		<!-- 二级缓存 -->
+		<setting name="cacheEnabled" value="true" />
+	</settings>
+
+	<typeAliases>
+		<!-- 配置包的别名，通常确定一个类的时候需要使用类的全限定名称 -->
+		<package name="cn.puhy.mybatis.model" />
+	</typeAliases>
+
+	<!-- 类型处理器,枚举类型 -->
+	<typeHandlers>
+		<typeHandler javaType="cn.puhy.mybatis.model.Enabled"
+			handler="org.apache.ibatis.type.EnumOrdinalTypeHandler" />
+	</typeHandlers>
+
+	<!-- 自定义对象工厂 -->
+	<!-- <objectFactory type="cn.puhy.mybatis.MyObjectFactory">
+		<property name="someProperty" value="100" />
+	</objectFactory> -->
+
+	<!-- 配置拦截器 -->
+	<plugins>
+		<!-- 分页插件，pagehelper5.0版本后的用法 -->
+		<plugin interceptor="com.github.pagehelper.PageInterceptor">
+			<property name="dialect"
+				value="com.github.pagehelper.dialect.rowbounds.MySqlRowBoundsDialect" />
+		</plugin>
+
+		<plugin interceptor="cn.puhy.mybatis.interceptor.MyInterceptor" />
+	</plugins>
+	
+	<!-- 数据库连接 -->
+	<!-- default为默认的环境ID -->
+	<environments default="development">
+		<environment id="development">
+			<!-- transactionManager为事务管理器 -->
+			<transactionManager type="JDBC" />
+			<!-- dataSource为数据源，type有UNPOOLED,POOLED,JNDI -->
+			<dataSource type="UNPOOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<!-- 指定占位符的默认值 -->
+				<property name="username" value="${username:root}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+		
+		<environment id="phy">
+			<transactionManager type="JDBC" />
+			<!-- 配置数据库连接信息 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<!-- 指定占位符的默认值 -->
+				<property name="username" value="${username:root}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 多数据库支持 -->
+	<databaseIdProvider type="DB_VENDOR">
+		<property name="MySQL" value="mysql" />
+		<property name="Oracle" value="oracle" />
+	</databaseIdProvider>
+
+	<!-- SQL语句和映射配置文件 -->
+	<mappers>
+		<!--<mapper resource="cn/puhy/mybatis/mapper/countryMapper.xml" /> -->
+		<!--<mapper resource="cn/puhy/mybatis/mapper/SysUserMapper.xml" /> -->
+		<!-- 查找包下的所有接口，再将接口全限定名转换为路径 -->
+		<package name="cn.puhy.mybatis.mapper" />
+	</mappers>
+
+</configuration>

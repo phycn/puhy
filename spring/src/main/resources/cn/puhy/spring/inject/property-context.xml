@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!-- 属性注入 -->
+	<!-- p:属性名 -->
+	<!-- p:属性名-ref 引用对象属性 -->
+	<bean id="bean1" class="cn.puhy.spring.inject.property.Bean1" p:field4="哈哈" p:bean3-ref="bean3">
+		<property name="field1"><value>phy</value></property>
+		<!-- 简写形式 -->
+		<property name="field3" value="puhy"/>
+		<!-- <null/>注入null值 -->
+		<property name="field2"><null/></property>
+	</bean>
+	
+	<bean id="bean3" class="cn.puhy.spring.inject.property.Bean3" p:field1="我是bean3"/>
+</beans>

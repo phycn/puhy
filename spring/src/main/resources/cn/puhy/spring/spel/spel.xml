@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="cn.puhy.spring.spel" resource-pattern="*.class" use-default-filters="true" />
+
+    <!-- T类型操作符 -->
+    <bean id="user" class="cn.puhy.spring.spel.User" p:randomNum="#{T(java.lang.Math).random() * 100.00}"/>
+
+    <!-- 获取系统变量 -->
+    <bean id="propertyBean" class="cn.puhy.spring.spel.PropertyBean"
+          p:osName="#{systemProperties['os.name']}"
+          p:javaVersion="#{systemProperties['java.class.version']}"/>
+
+    <!-- 定义配置文件 -->
+    <util:properties id="phyProperties" location="classpath:cn/puhy/spring/spel/phy.properties" />
+    <!-- 属性占位符，可以在表达式中直接使用${属性}，参看AnnotationSpel类 -->
+    <context:property-placeholder properties-ref="phyProperties" />
+</beans>

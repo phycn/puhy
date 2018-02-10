@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace定义当前xml的命名空间 -->
+<mapper namespace="cn.puhy.mybatis.mapper.countryMapper">
+	
+	<!-- resultType为当前查询的返回类型 -->
+	<select id="selectAll" resultType="Country">
+		select id, countryname, countrycode from country
+	</select>
+</mapper>

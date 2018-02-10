@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace为接口的包名 -->
+<mapper namespace="cn.puhy.mybatis.mapper.TSerialMapper">
+
+	<resultMap type="TSerial" id="tSerialMap">
+		<id property="id" column="id" />
+		<result property="length" column="length" />
+		<result property="limitNum" column="limitNum" />
+		<result property="version" column="version" />
+		<result property="cacheNum" column="cacheNum" />
+	</resultMap>
+	
+	<select id="query" resultMap="tSerialMap">
+		select * from t_serial where id = #{id} for update
+	</select>
+	
+	<update id="update">
+		update t_serial set 
+			length = #{length},
+			limitNum = #{limitNum},
+			version = #{version},
+			cacheNum = #{cacheNum}
+		where id = #{id}
+	</update>	
+</mapper>
