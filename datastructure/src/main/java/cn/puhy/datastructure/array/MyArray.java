@@ -1,5 +1,11 @@
 package cn.puhy.datastructure.array;
 
+/**
+ * 数组
+ *
+ * @author PUHY
+ * 2018-02-25 11:32
+ */
 public class MyArray {
 
     private long[] array;
