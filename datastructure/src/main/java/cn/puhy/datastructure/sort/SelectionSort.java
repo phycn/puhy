@@ -12,6 +12,7 @@ public class SelectionSort {
     private static void sort(long[] arr) {
 
         int length = arr.length;
+        //每次外层循环后最小的数都在前面
         for (int i = 0; i < length - 1; i++) {
             int minIndex = i;
             //找出最小值的索引

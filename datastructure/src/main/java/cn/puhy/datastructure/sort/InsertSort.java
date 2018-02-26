@@ -21,6 +21,7 @@ public class InsertSort {
                 arr[j] = arr[j - 1];
                 j--;
             }
+            //腾出来的位置
             arr[j] = temp;
         }
     }
