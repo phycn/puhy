@@ -88,7 +88,7 @@ public class MyLinkedList {
             //指定位置的前一节点的下一节点变为原指定位置节点的下一节点
             previous.next = curr.next;
 
-            length++;
+            length--;
         } else {
             throw new Exception("非法数值");
         }

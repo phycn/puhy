@@ -11,6 +11,8 @@ public class Node {
     public long data;
     //节点域，指向下一个节点
     public Node next;
+    //前一个节点
+    public Node previous;
 
     public Node(long data) {
         this.data = data;
