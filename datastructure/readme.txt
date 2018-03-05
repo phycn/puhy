@@ -13,6 +13,7 @@ cn.puhy.datastructure.sort              排序
     BuddleSort                          冒泡排序
     InsertSort                          插入排序
     SelectionSort                       选择排序
+    ShellSort                           希尔排序
 
 cn.puhy.datastructure.recursion         递归
     OrdinaryRecursion                   普通递归

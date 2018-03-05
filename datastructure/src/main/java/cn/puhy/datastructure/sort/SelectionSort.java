@@ -38,7 +38,7 @@ public class SelectionSort {
     }
 
     public static void main(String[] args) {
-        long[] arr = {99, 10, 8, 19, 5, 2, 1, 22, 13};
+        long[] arr = {0, 10, 8, 19, 5, 2, 1, 22, 13};
         sort(arr);
         display(arr);
     }
