@@ -14,9 +14,14 @@ cn.puhy.datastructure.sort              排序
     InsertSort                          插入排序
     SelectionSort                       选择排序
     ShellSort                           希尔排序
+    QuickSort                           快速排序
 
 cn.puhy.datastructure.recursion         递归
     OrdinaryRecursion                   普通递归
     Triangle                            三角数值
     Fibonacci                           斐波那契数列
     TowerOfHanoi                        汉诺塔
+
+cn.puhy.datastructure.tree              树
+    MyBinaryTree                        二叉排序树
+
