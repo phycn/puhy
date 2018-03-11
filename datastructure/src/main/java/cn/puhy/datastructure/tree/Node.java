@@ -14,6 +14,8 @@ public class Node {
     public Node leftChild;
     //右子节点
     public Node rightChild;
+    //节点高度
+    public int height;
 
     public Node(int data) {
         this.data = data;
