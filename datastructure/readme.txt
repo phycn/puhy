@@ -24,4 +24,9 @@ cn.puhy.datastructure.recursion         递归
 
 cn.puhy.datastructure.tree              树
     MyBinaryTree                        二叉排序树
+    MyAvlTree                           二叉平衡树
+    MyRbTree                            红黑树
+
+cn.puhy.datastructure.hash              哈希
+    MyHashTable                         哈希表
 
