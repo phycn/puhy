@@ -44,6 +44,14 @@ public class FirstController {
         return "first/success";
     }
 
+    //使用POST传输
+    @RequestMapping(value = "/postMethod", method = RequestMethod.POST)
+    public String postMethod(HttpServletRequest request) {
+        System.out.println(request.getParameter("name"));
+        System.out.println(request.getParameter("age"));
+        return "first/success";
+    }
+
     @RequestMapping("/handle2")
     //@CookieValue绑定cookie值，@RequestHeader绑定HTTP报文头信息
     public String handle2(@CookieValue("JSESSIONID") String sessionId, @RequestHeader("Accept-Language") String acceptLanguage) {

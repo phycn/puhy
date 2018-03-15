@@ -14,7 +14,7 @@ public class AdvanceAspect {
     }
 
     /**
-     * 访问连接点信息
+     * 访问连接点信息，ProceedingJoinPoint只能用在环绕增强
      * @param pjp
      * @throws Throwable
      */
