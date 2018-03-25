@@ -85,5 +85,6 @@
         <module>../log4j</module>
         <module>../mavenstudy</module>
         <module>../springSourceStudy</module>
+        <module>../mymvc</module>
     </modules>
 </project>
