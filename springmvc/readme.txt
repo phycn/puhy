@@ -4,6 +4,7 @@ FirstController.java    控制器
     @RequestParam       绑定请求参数
     @CookieValue        绑定请求中的cookie值
     @RequestHeader      绑定HTTP报文头信息
+    @GetMapping         等同于@RequestMapping的GET
 view/first              视图
 
 ConverterController.java    HttpMessageConverter转换器

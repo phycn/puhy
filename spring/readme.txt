@@ -62,7 +62,7 @@ cn.puhy.spring.aop.advice													aop增强
 	GreetingAfterAdvice.java		后置增强	
 	GreetingInterceptor.java		环绕增强
 	GreetingThrowAdvice			异常抛出增强
-	MyMonitor.java				引介增强
+	MyMonitor.java				引介增强，为目标类创建新的方法和属性
 	aop-context.xml				增强类配置
 	
 cn.puhy.spring.aop.aspect													切面

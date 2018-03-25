@@ -199,28 +199,6 @@ public class MyAvlTree {
         return minNode(node.leftChild);
     }
 
-    /**
-     * 查找节点
-     *
-     * @param value
-     * @return
-     */
-    public Node find(int value) {
-        Node current = root;
-        while (true) {
-            if (current == null) {
-                return null;
-            }
-            if (value < current.data) {
-                current = current.leftChild;
-            } else if (value > current.data) {
-                current = current.rightChild;
-            } else {
-                return current;
-            }
-        }
-    }
-
     public static void main(String[] args) {
         //[35 43 75 67 4 19 29 89 59 38 ]
 //        int[] array = Common.generateArray();

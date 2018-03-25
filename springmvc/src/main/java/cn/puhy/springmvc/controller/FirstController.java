@@ -37,7 +37,8 @@ public class FirstController {
         return mav;
     }
 
-    @RequestMapping("/handle1")
+    //可以映射多个url
+    @RequestMapping(value = {"/handle1", "/handle1_1"})
     //@RequestParam绑定请求参数
     public String handle1(@RequestParam("name") String name, @RequestParam("age") String age) {
         System.out.println(name + " " + age);
@@ -71,6 +72,12 @@ public class FirstController {
     public String handle4(HttpServletRequest request) {
         String name = WebUtils.findParameterValue(request, "name");
         System.out.println(name);
+        return "first/success";
+    }
+
+    @GetMapping("/getMapping")
+    //@GetMapping等同于@RequestMapping(value = "/getMapping", method = RequestMethod.GET)
+    public String getMapping() {
         return "first/success";
     }
 }

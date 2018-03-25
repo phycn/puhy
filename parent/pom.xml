@@ -84,5 +84,6 @@
         <module>../activiti</module>
         <module>../log4j</module>
         <module>../mavenstudy</module>
+        <module>../springSourceStudy</module>
     </modules>
 </project>
