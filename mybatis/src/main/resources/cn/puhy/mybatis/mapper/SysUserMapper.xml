@@ -31,8 +31,8 @@
 		<result property="createTime" column="create_time" jdbcType="TIMESTAMP" />
 	</resultMap>
 	
-	<!-- id为接口中的参数名 -->
-	<select id="selectById" resultMap="sysUserMap">
+	<!-- id为接口中的参数名,useCache为使用缓存,flushCache为刷新缓存 -->
+	<select id="selectById" resultMap="sysUserMap" useCache="true" flushCache="false">
 		select * from sys_user where id = #{id}
 	</select>
 	

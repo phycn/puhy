@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 控制器 -->
+    <bean id="simpleController" class="cn.puhy.springmvcsourcestudy.SimpleController"/>
+    <!-- 拦截器 -->
+    <bean id="simpleHandlerInterceptor" class="cn.puhy.springmvcsourcestudy.SimpleHandlerInterceptor"/>
+    <!-- HandlerMapping，映射URL， -->
+    <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping" p:interceptors-ref="simpleHandlerInterceptor">
+        <property name="urlMap">
+            <props>
+                <prop key="/user.do">simpleController</prop>
+            </props>
+        </property>
+    </bean>
+    <!-- HandlerAdapter，适配器，调用具体业务逻辑 -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+    <!-- ViewResolver -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/page/" p:suffix=".jsp" p:viewClass="org.springframework.web.servlet.view.JstlView"/>
+    <!-- 异常处理器 -->
+    <bean class="cn.puhy.springmvcsourcestudy.SimpleExceptionResolver"/>
+</beans>

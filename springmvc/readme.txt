@@ -44,7 +44,7 @@ UploadController.java           文件上传，需要配置文件上传解析器
 MyWebSocketHandler.java         WebSocket支持，mvc-context.xml中有配置
     ws.jsp                      发送和接收消息
 
-    hehe
+MyExceptionResolver.java        异常处理器
 
 
 

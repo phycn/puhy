@@ -81,7 +81,10 @@
     <!-- 声明WebSocketHandler -->
     <bean id="myWebSocketHandler" class="cn.puhy.springmvc.handler.MyWebSocketHandler"/>
 
-    <!-- 一定要加 -->
+    <!-- 异常处理器，异常都会执行这个 -->
+    <bean class="cn.puhy.springmvc.exceptionresolver.MyExceptionResolver"/>
+
+    <!-- 一定要加，加了才能识别注解的Controller -->
     <!-- conversion-service为类型转换器 -->
     <mvc:annotation-driven conversion-service="formattingConversionService"/>
 </beans>

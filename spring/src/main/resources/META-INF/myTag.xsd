@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<xsd:schema xmlns="http://www.puhy.cn/schema/myTag" 
+<xsd:schema xmlns="http://www.puhy.cn/schema/myTag"
 			xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-            xmlns:beans="http://www.springframework.org/schema/beans"
-            targetNamespace="http://www.puhy.cn/schema/myTag" elementFormDefault="qualified" attributeFormDefault="unqualified"><!-- 自定义标签命名空间 -->
+			targetNamespace="http://www.puhy.cn/schema/myTag" elementFormDefault="qualified"
+			attributeFormDefault="unqualified"><!-- 自定义标签命名空间 -->
 
     <xsd:import namespace="http://www.springframework.org/schema/beans"/>
     <!-- 定义标签 -->

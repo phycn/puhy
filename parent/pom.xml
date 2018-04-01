@@ -85,6 +85,7 @@
         <module>../log4j</module>
         <module>../mavenstudy</module>
         <module>../springSourceStudy</module>
+        <!-- 自己实现的模拟spring mvc框架 -->
         <module>../mymvc</module>
     </modules>
 </project>

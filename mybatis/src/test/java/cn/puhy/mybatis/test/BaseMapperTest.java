@@ -20,7 +20,8 @@ public class BaseMapperTest {
 	public static void init() {
 		try {
 			Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+			//第二个参数指定加载数据库配置
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader, "development");
 			reader.close();
 			sqlsession = getSqlSession();
 		} catch (IOException e) {
