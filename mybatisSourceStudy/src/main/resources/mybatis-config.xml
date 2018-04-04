@@ -26,6 +26,7 @@
 
     <mappers>
         <mapper resource="mybatisUser.xml"/>
+        <mapper resource="mybatisUser2.xml"/>
     </mappers>
 
 </configuration>

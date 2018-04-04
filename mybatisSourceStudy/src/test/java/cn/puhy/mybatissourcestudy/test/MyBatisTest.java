@@ -1,6 +1,7 @@
 package cn.puhy.mybatissourcestudy.test;
 
 import cn.puhy.mybatissourcestudy.MybatisUser;
+import cn.puhy.mybatissourcestudy.mapper.MybatisUser2Mapper;
 import org.apache.ibatis.builder.xml.XMLMapperBuilder;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.mapping.MappedStatement;
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -39,5 +41,15 @@ public class MyBatisTest {
         builder.parse();
         MappedStatement mappedStatement = configuration.getMappedStatement("queryById");
         System.out.println(mappedStatement);
+    }
+
+    @Test
+    public void getMapperTest() throws IOException {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+        SqlSessionFactory sqlSessionFactory = builder.build(reader);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        MybatisUser2Mapper mapper = sqlSession.getMapper(MybatisUser2Mapper.class);
+        Assert.assertNotNull(mapper.queryById(1));
     }
 }
