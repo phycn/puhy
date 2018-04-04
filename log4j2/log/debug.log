@@ -1,0 +1,10 @@
+22:52:58.888 [main] DEBUG cn.puhy.log4j2.Log4j2 - 1212
+22:55:17.051 [main] DEBUG cn.puhy.log4j2.Log4j2 - 1212
+22:56:13.197 [main] DEBUG cn.puhy.log4j2.Log4j2 - debug info
+22:56:13.200 [main] INFO  cn.puhy.log4j2.Log4j2 - info info
+19:15:10.121 [main] DEBUG cn.puhy.log4j2.Log4j2 - debug info
+19:15:10.125 [main] INFO  cn.puhy.log4j2.Log4j2 - info info
+19:15:54.574 [main] DEBUG cn.puhy.log4j2.Log4j2 - debug info
+19:15:54.580 [main] INFO  cn.puhy.log4j2.Log4j2 - info info
+19:17:43.688 [main] DEBUG cn.puhy.log4j2.Log4j2 - debug info
+19:17:43.695 [main] INFO  cn.puhy.log4j2.Log4j2 - info info

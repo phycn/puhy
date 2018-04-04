@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- status为自己本身的日志级别，monitorinterval为自动重新配置的监测间隔时间 -->
+<Configuration status="ERROR" monitorinterval="10">
+    <Appenders>
+        <!-- Console节点用来定义输出到控制台的Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <!-- PatternLayout输出格式，不设置默认为:%m%n -->
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} %l - %m%n"/>
+        </Console>
+
+        <!--
+                %d{yyyy-MM-dd HH:mm:ss, SSS} : 日志生产时间,输出到毫秒的时间
+                %-5level : 输出日志级别，-5表示左对齐并且固定输出5个字符，如果不足在右边补0
+                %c : logger的名称(%logger)
+                %t : 输出当前线程名称
+                %p : 日志输出格式
+                %m : 日志内容，即 logger.info("message")
+                %n : 换行符
+                %C : Java类名(%F)
+                %L : 行号
+                %M : 方法名
+                %l : 输出语句所在的行数, 包括类名、方法名、文件名、行数
+                hostName : 本地机器名
+                hostAddress : 本地ip地址
+             -->
+
+        <!-- File节点用来定义输出到指定位置的文件的Appender -->
+        <File name="myFileAppender" fileName="/Users/puhongyu/phy/idea/log4j2/log/phy.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <File name="debugAppender" fileName="/Users/puhongyu/phy/idea/log4j2/log/debug.log">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <!-- RollingFile节点用来定义超过指定大小自动删除旧的创建新的Appender -->
+        <!-- filePattern:指定新建日志文件的名称格式 -->
+        <!-- Policies:指定滚动日志的策略，就是什么时候进行新建日志文件输出日志 -->
+        <RollingFile name="RollingFileInfo" fileName="/Users/puhongyu/phy/idea/log4j2/log/roll.log"
+                     filePattern="${sys:user.home}/logs/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log">
+            <!--控制台只输出level及以上级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="[%d{HH:mm:ss:SSS}] [%p] - %l - %m%n"/>
+            <Policies>
+                <!-- 基于时间的滚动策略 -->
+                <TimeBasedTriggeringPolicy/>
+                <!-- 基于文件大小的滚动策略 -->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件，这里设置了20 -->
+            <DefaultRolloverStrategy max="20"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- name:用来指定该Logger所适用的类或者类所在的包全路径,继承自Root节点 -->
+        <!-- additivity为false只在自定义的Appender中进行输出 -->
+        <Logger name="cn.puhy.log4j2" level="debug" additivity="true">
+            <!-- 指定输出源 -->
+            <AppenderRef ref="myFileAppender"/>
+        </Logger>
+
+        <!-- Root节点用来指定项目的根日志，如果没有单独指定Logger，那么就会默认使用该Root日志输出 -->
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="debugAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>
