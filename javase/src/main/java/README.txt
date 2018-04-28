@@ -174,6 +174,8 @@ phy.net.socket-socket通信
     HalfCloseServer-半关闭Socket的服务端
     HalfCloseClient-半关闭Socket的客户端
 
+phy.net.bio-BIO
+
 phy.reflection
     BootstrapTest-根类加载器
     ClassLoaderPropTest-类加载器

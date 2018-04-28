@@ -88,5 +88,6 @@
         <!-- 自己实现的模拟spring mvc框架 -->
         <module>../mymvc</module>
         <module>../api-gateway</module>
+        <module>../highConcurrency</module>
     </modules>
 </project>

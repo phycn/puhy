@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 配置属性值，通过${属性名获取}，后面的数据库配置就是通过这种方式 -->
+    <!--<properties resource="config.properties">
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        &lt;!&ndash; 占位符指定默认值 &ndash;&gt;
+        <property
+                name="org.apache.ibatis.parsing.PropertyParser.enable-default-value"
+                value="true"/>
+    </properties>-->
+
+    <settings>
+        <!-- 指定使用log4j输出日志 -->
+        <setting name="logImpl" value="LOG4J"/>
+        <!-- 将以下划线方式命名的数据库列映射成java对象的驼峰式命名，比如：user_name映射成userName -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 完整加载 -->
+        <setting name="aggressiveLazyLoading" value="false"/>
+        <!-- 二级缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+
+    <!--<typeAliases>
+        &lt;!&ndash; 在使用cn.puhy.mybatis.model.SysPrivilege的地方都可以直接使用别名sysPrivilege &ndash;&gt;
+        <typeAlias type="cn.puhy.mybatis.model.SysPrivilege" alias="sysPrivilege"/>
+        &lt;!&ndash; 配置包的别名，通常确定一个类的时候需要使用类的全限定名称 &ndash;&gt;
+        <package name="cn.puhy.mybatis.model"/>
+    </typeAliases>-->
+
+    <!-- 类型处理器,枚举类型 -->
+    <!--<typeHandlers>
+        <typeHandler javaType="cn.puhy.mybatis.model.Enabled"
+                     handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+    </typeHandlers>-->
+
+    <!-- 自定义对象工厂 -->
+    <!-- <objectFactory type="cn.puhy.mybatis.MyObjectFactory">
+        <property name="someProperty" value="100" />
+    </objectFactory> -->
+
+    <!-- 配置拦截器 -->
+    <!--<plugins>
+        &lt;!&ndash; 分页插件，pagehelper5.0版本后的用法 &ndash;&gt;
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <property name="dialect"
+                      value="com.github.pagehelper.dialect.rowbounds.MySqlRowBoundsDialect"/>
+        </plugin>
+
+        <plugin interceptor="cn.puhy.mybatis.interceptor.MyInterceptor"/>
+    </plugins>-->
+
+    <!-- 多数据库支持 -->
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MySQL" value="mysql"/>
+        <property name="Oracle" value="oracle"/>
+    </databaseIdProvider>
+
+    <!-- SQL语句和映射配置文件 -->
+    <!--<mappers>
+        &lt;!&ndash; 使用相对于类路径的资源引用 &ndash;&gt;
+        &lt;!&ndash;<mapper resource="cn/puhy/mybatis/mapper/SysUserMapper.xml" /> &ndash;&gt;
+        &lt;!&ndash; 使用完全限定资源定位符（URL）&ndash;&gt;
+        &lt;!&ndash;<mapper url="file:///var/mappers/AuthorMapper.xml"/>&ndash;&gt;
+        &lt;!&ndash; 使用映射器接口实现类的完全限定类名 &ndash;&gt;
+        &lt;!&ndash;<mapper class="cn.puhy.mybatis.model.SysRole"/>&ndash;&gt;
+        &lt;!&ndash; 查找包下的所有接口，再将接口全限定名转换为路径 &ndash;&gt;
+        <package name="cn.puhy.mybatis.mapper"/>
+    </mappers>-->
+
+</configuration>
