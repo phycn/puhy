@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--<context:annotation-config/>-->
+    <!-- 模块加载引擎 -->
+    <bean name="moduleLoader" class="com.alipay.jarslink.api.impl.ModuleLoaderImpl"/>
+    <!-- 模块管理器 -->
+    <bean name="moduleManager" class="com.alipay.jarslink.api.impl.ModuleManagerImpl"/>
+
+    <bean id="moduleRefreshScheduler" class="cn.puhy.jarslink.ModuleRefreshSchedulerImpl">
+        <property name="moduleLoader" ref="moduleLoader"/>
+        <property name="moduleManager" ref="moduleManager"/>
+    </bean>
+</beans>

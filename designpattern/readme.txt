@@ -19,3 +19,5 @@ proxy               代理模式
 prototype           原型模式
 
 mediator            中介者模式，同事类之间是协作关系
+
+command             命令模式
