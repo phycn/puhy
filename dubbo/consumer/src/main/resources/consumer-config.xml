@@ -6,7 +6,10 @@
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <bubbo:application name="phyConsumer"/>
     <!-- 注册中心 -->
+    <!-- register为false表示只订阅不注册服务 -->
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183"/>
     <!-- 生成远程服务代理，可以和本地bean一样使用firstService -->
-    <dubbo:reference id="firstService" interface="cn.puhy.dubbo.api.FirstService"/>
+    <!-- group为引用指定的分组 -->
+    <!-- url为直连提供者 -->
+    <dubbo:reference group="phy"  id="firstService" interface="cn.puhy.dubbo.api.FirstService"/>
 </beans>

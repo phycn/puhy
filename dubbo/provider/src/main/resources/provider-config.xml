@@ -6,11 +6,13 @@
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <bubbo:application name="phyProvider"/>
     <!-- 注册中心 -->
+    <!-- register为false表示只订阅不注册服务 -->
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183"/>
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="20880"/>
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="cn.puhy.dubbo.api.FirstService" ref="firstService"/>
+    <!-- group分组接口，consumer也要为这分组才能调用，或者用* -->
+    <dubbo:service group="phy" interface="cn.puhy.dubbo.api.FirstService" ref="firstService"/>
 
     <!-- 实现的服务 -->
     <bean id="firstService" class="cn.puhy.dubbo.provider.service.FirstServiceImpl"/>
