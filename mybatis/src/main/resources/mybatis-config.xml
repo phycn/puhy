@@ -90,11 +90,11 @@
     <!-- SQL语句和映射配置文件 -->
     <mappers>
         <!-- 使用相对于类路径的资源引用 -->
-        <!--<mapper resource="cn/puhy/mybatis/mapper/SysUserMapper.xml" /> -->
+        <!--<mapping resource="cn/puhy/mybatis/mapping/SysUserMapper.xml" /> -->
         <!-- 使用完全限定资源定位符（URL）-->
-        <!--<mapper url="file:///var/mappers/AuthorMapper.xml"/>-->
+        <!--<mapping url="file:///var/mappers/AuthorMapper.xml"/>-->
         <!-- 使用映射器接口实现类的完全限定类名 -->
-        <!--<mapper class="cn.puhy.mybatis.model.SysRole"/>-->
+        <!--<mapping class="cn.puhy.mybatis.model.SysRole"/>-->
         <!-- 查找包下的所有接口，再将接口全限定名转换为路径 -->
         <package name="cn.puhy.mybatis.mapper"/>
     </mappers>

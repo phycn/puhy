@@ -5,14 +5,52 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <bubbo:application name="phyProvider"/>
+
     <!-- 注册中心 -->
     <!-- register为false表示只订阅不注册服务 -->
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183"/>
+    <!-- dynamic 静态服务 -->
+    <!-- default为是否为默认注册中心 -->
+    <dubbo:registry
+            id="zoo1"
+            protocol="zookeeper"
+            address="127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183" default="true"/>
+
+    <!-- 多注册中心 -->
+    <!--<dubbo:registry
+            id="zoo2"
+            protocol="zookeeper"
+            address="127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183"/>-->
+
     <!-- 用dubbo协议在20880端口暴露服务 -->
-    <dubbo:protocol name="dubbo" port="20880"/>
+    <!-- dispatcher为线程派发策略 -->
+    <!-- threadpool为线程池 -->
+    <!-- threads为服务线程池大小 -->
+    <dubbo:protocol
+            name="dubbo"
+            port="20880"
+            dispatcher="all"
+            threadpool="fixed" threads="100"/>
+
+    <!-- 多协议 -->
+    <dubbo:protocol name="rmi" port="1099"/>
+
     <!-- 声明需要暴露的服务接口 -->
     <!-- group分组接口，consumer也要为这分组才能调用，或者用* -->
-    <dubbo:service group="phy" interface="cn.puhy.dubbo.api.FirstService" ref="firstService"/>
+    <!-- retries为重试次数，不包含第一次 -->
+    <!-- cluster为集群模式配置，可选值failover/failfast/failsafe/failback/forking -->
+    <!-- loadbalance为负载均衡，可选值random/roundrobin/leastactive -->
+    <!-- protocol为使用什么协议暴露服务 -->
+    <!-- registry为注册中心 -->
+    <!-- version为版本号 -->
+    <dubbo:service group="phy"
+                   interface="cn.puhy.dubbo.api.FirstService"
+                   ref="firstService"
+                   retries="2"
+                   cluster="failsafe"
+                   loadbalance="roundrobin"
+                   protocol="dubbo,rmi"
+                   registry="zoo1"
+                   version="1.0.0"/>
 
     <!-- 实现的服务 -->
     <bean id="firstService" class="cn.puhy.dubbo.provider.service.FirstServiceImpl"/>

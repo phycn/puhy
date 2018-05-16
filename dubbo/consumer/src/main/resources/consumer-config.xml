@@ -5,11 +5,35 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <bubbo:application name="phyConsumer"/>
+
+    <!-- check为false表示关闭所有服务的启动时检查 -->
+    <dubbo:consumer check="false"/>
+
     <!-- 注册中心 -->
     <!-- register为false表示只订阅不注册服务 -->
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183"/>
+    <!-- check为false表示关闭注册中心启动时检查 -->
+    <!-- subscribe为false表示只注册不订阅 -->
+    <dubbo:registry
+            id="zoo1"
+            protocol="zookeeper"
+            address="127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183" check="false"/>
+
     <!-- 生成远程服务代理，可以和本地bean一样使用firstService -->
     <!-- group为引用指定的分组 -->
     <!-- url为直连提供者 -->
-    <dubbo:reference group="phy"  id="firstService" interface="cn.puhy.dubbo.api.FirstService"/>
+    <!-- check为false表示关闭这个服务的启动时检查 -->
+    <!-- retries为重试次数，不包含第一次 -->
+    <!-- cluster为集群模式配置，可选值failover/failfast/failsafe/failback/forking -->
+    <!-- loadbalance为负载均衡，可选值random/roundrobin/leastactive -->
+    <!-- registry为注册中心 -->
+    <!-- version为版本号 -->
+    <dubbo:reference group="phy"
+                     id="firstService"
+                     interface="cn.puhy.dubbo.api.FirstService"
+                     check="false"
+                     retries="2"
+                     cluster="failsafe"
+                     loadbalance="roundrobin"
+                     registry="zoo1"
+                     version="1.0.0"/>
 </beans>

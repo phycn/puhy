@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <bubbo:application name="merge-consumer"/>
+
+    <dubbo:registry
+            protocol="zookeeper"
+            address="127.0.0.1:2181,127.0.0.1:2182,127.0.0.1:2183"/>
+
+    <!-- 合并merge1,merge2的结果 -->
+    <dubbo:reference group="merge1,merge2"
+                     id="mergeService"
+                     interface="cn.puhy.dubbo.api.MergeService"
+                     merger="true"/>
+</beans>

@@ -25,3 +25,7 @@ command             命令模式
 chainofresponsibility   责任链模式
 
 decorator           装饰模式
+
+strategy            策略模式
+
+adapter             适配器模式
