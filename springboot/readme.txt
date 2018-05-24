@@ -11,6 +11,8 @@ springboot-first            第一个springboot
     SwaggerConfig           Swagger配置
     http://localhost:8081/swagger-ui.html   API文档
 
+    log4j2.xml              整合log4j2
+
     /static                 静态资源目录，可直接访问
     /templates              模板目录
 

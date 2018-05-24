@@ -44,6 +44,21 @@ public class CuratorCrud<T> {
         }
     }
 
+    /**
+     * 创建临时节点
+     * @param path
+     * @param data
+     */
+    public void createEphemeral(String path, byte[] data) {
+        try {
+            //creatingParentsIfNeeded 递归创建
+            //withMode 创建模式
+            cf.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT_SEQUENTIAL).forPath(path, data);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /***
      * 删除节点
      * deletingChildrenIfNeeded 是否删除子节点 递归
