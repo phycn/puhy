@@ -31,3 +31,5 @@ strategy            策略模式
 adapter             适配器模式
 
 iterator            迭代器模式
+
+composite           组合模式

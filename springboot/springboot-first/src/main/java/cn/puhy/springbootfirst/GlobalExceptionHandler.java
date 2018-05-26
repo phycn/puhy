@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  * 2018/5/14 21:55
  */
 @ControllerAdvice
-class GlobalExceptionHandler {
+public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     public ModelAndView businessExceptionHandler(HttpServletRequest req, Exception e) throws Exception {
         ModelAndView mav = new ModelAndView();

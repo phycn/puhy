@@ -16,4 +16,12 @@ springboot-first            第一个springboot
     /static                 静态资源目录，可直接访问
     /templates              模板目录
 
+    banner.txt              启动信息文件，启动时展示文件内容
+
+    EnvConfig               获取属性，包括application.properties里的
+
+    BeanConditional         有指定的bean对象才进行配置
+    ClassConditional        classpath中有指定的类才进行配置
+    EnvConditional          根据env属性来判断是否加载
+
 springboot-mybatis          整合mybatis
