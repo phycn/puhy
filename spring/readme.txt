@@ -125,6 +125,14 @@ cn.puhy.spring.transaction.connectreveal        连接泄露
 cn.puhy.spring.springjdbc                   Spring JDBC
     UserDao.java                            Spring JDBC增删查改
 
+cn.puhy.spring.cache                        spring cache
+    @Cacheable                              先检查是否有缓存，没有再执行方法并放入缓存
+    @CachePut                               总是执行方法并放入缓存
+    @CacheEvict                             移除缓存
+    @Caching                                组注解，可包含多个@Cacheable，@CachePut
+    @CacheConfig                            类级别缓存
+
+
 
 
 

@@ -14,12 +14,14 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Test {
 	public static void main(String[] args) {
-		Test t = new Test();
-		try {
-			t.method1();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		System.out.println(10 /4);
+//		Test t = new Test();
+//		try {
+//			t.method1();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 	}
 
 	private void method1() throws Exception {
