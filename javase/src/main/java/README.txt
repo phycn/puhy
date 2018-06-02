@@ -175,6 +175,8 @@ phy.net.socket-socket通信
     HalfCloseClient-半关闭Socket的客户端
 
 phy.net.bio-BIO
+phy.net.nio-NIO
+phy.net.aio-AIO
 
 phy.reflection
     BootstrapTest-根类加载器
