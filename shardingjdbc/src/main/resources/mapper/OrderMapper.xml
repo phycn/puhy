@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.puhy.shardingjdbc.spring.mapper.OrderMapper">
+
+    <resultMap type="cn.puhy.shardingjdbc.spring.model.Order" id="order">
+        <id property="orderId" column="order_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="status" column="status"/>
+        <result property="addressId" column="address_id"/>
+    </resultMap>
+
+    <insert id="insert">
+		insert into t_order (user_id, status, address_id) values (#{userId}, #{status}, #{addressId})
+	</insert>
+
+    <select id="queryById" resultMap="order">
+		select * from t_order where user_id between 1 and #{userId}
+	</select>
+</mapper>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:sharding="http://shardingjdbc.io/schema/shardingjdbc/sharding"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd 
+                        http://www.springframework.org/schema/tx 
+                        http://www.springframework.org/schema/tx/spring-tx.xsd
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://shardingjdbc.io/schema/shardingjdbc/sharding 
+                        http://shardingjdbc.io/schema/shardingjdbc/sharding/sharding.xsd">
+    <context:component-scan base-package="cn.puhy.shardingjdbc"/>
+
+    <bean id="sharding_0" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/sharding_0"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <bean id="sharding_1" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/sharding_1"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <!-- 分库策略 -->
+    <sharding:standard-strategy id="databaseShardingStrategy"
+                                sharding-column="address_id"
+                                precise-algorithm-class="cn.puhy.shardingjdbc.rawjdbc.ShardingDatabaseAlgorithm"
+                                range-algorithm-class="cn.puhy.shardingjdbc.rawjdbc.RangeAlgorithm"/>
+    <!-- 分表策略 -->
+    <sharding:standard-strategy id="tableShardingStrategy"
+                                sharding-column="user_id"
+                                precise-algorithm-class="cn.puhy.shardingjdbc.rawjdbc.ShardingDatabaseAlgorithm"
+                                range-algorithm-class="cn.puhy.shardingjdbc.rawjdbc.RangeAlgorithm"/>
+
+    <sharding:data-source id="shardingDataSource">
+        <sharding:sharding-rule data-source-names="sharding_0, sharding_1">
+            <sharding:table-rules>
+                <sharding:table-rule logic-table="t_order" actual-data-nodes="sharding_${0..1}.t_order_${0..1}"
+                                     database-strategy-ref="databaseShardingStrategy"
+                                     table-strategy-ref="tableShardingStrategy" generate-key-column="order_id"/>
+            </sharding:table-rules>
+        </sharding:sharding-rule>
+    </sharding:data-source>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="shardingDataSource"/>
+    </bean>
+    <tx:annotation-driven/>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="shardingDataSource"/>
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.puhy.shardingjdbc.spring.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+</beans>
