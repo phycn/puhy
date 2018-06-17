@@ -7,11 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class FirstServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("hehe phyphy");
     }
 }
