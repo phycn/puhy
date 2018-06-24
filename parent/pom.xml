@@ -89,5 +89,8 @@
         <module>../mymvc</module>
         <module>../api-gateway</module>
         <module>../highConcurrency</module>
+        <module>../springboot</module>
+        <module>../springcloud</module>
+        <module>../log4j2</module>
     </modules>
 </project>
