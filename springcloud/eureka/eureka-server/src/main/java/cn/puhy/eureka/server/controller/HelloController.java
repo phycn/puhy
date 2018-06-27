@@ -1,10 +1,9 @@
 package cn.puhy.eureka.server.controller;
 
+import cn.puhy.springcloud.common.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author PUHY
@@ -20,5 +19,23 @@ public class HelloController {
     public String index() {
         System.out.println("hehe phy");
         return "Hello phy";
+    }
+
+    @RequestMapping(value = "/object", method = RequestMethod.GET)
+    public User object(@RequestParam("id") int id) {
+        User user = new User();
+        user.setId(id);
+        user.setName("puhongyu");
+        user.setAddress("chengdu");
+        return user;
+    }
+
+    @RequestMapping(value = "/post", method = RequestMethod.POST)
+    public User post(@RequestBody User user) {
+        System.out.println("收到的：" + user);
+        user.setId(1122);
+        user.setName("puhy");
+        user.setAddress("chongqing");
+        return user;
     }
 }
