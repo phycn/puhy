@@ -1,0 +1,2 @@
+DailyAndFileSizeAppender    按日期和文件大小分割日志
+RollingCalendar
