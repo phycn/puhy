@@ -1,29 +1,25 @@
-package cn.puhy.eureka.consumer;
+package cn.puhy.withouteureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @author puhongyu
- * 2018/6/27 10:37
+ * @author PUHY
+ * 2018-06-30 17:08
  */
-@EnableDiscoveryClient
 @SpringBootApplication
-@EnableCircuitBreaker       //开启断路器
-public class ConsumerApplication {
-
+public class WithoutEurekaApplication {
     @Bean
-    @LoadBalanced       //ribbon负载均衡
+    @LoadBalanced
+        //ribbon负载均衡
     RestTemplate restTemplate() {
         return new RestTemplate();
     }
-    
+
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerApplication.class);
+        SpringApplication.run(WithoutEurekaApplication.class);
     }
 }

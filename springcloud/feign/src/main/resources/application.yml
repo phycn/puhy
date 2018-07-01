@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: feign-consumer
+
+server:
+  port: 9000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8899/eureka/,http://localhost:8898/eureka/
+
+hello-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

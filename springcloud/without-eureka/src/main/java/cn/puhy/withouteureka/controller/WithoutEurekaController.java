@@ -1,7 +1,6 @@
-package cn.puhy.eureka.consumer.controller;
+package cn.puhy.withouteureka.controller;
 
 import cn.puhy.springcloud.common.bean.User;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
  * 2018/6/27 10:39
  */
 @RestController
-public class ConsumerController {
+public class WithoutEurekaController {
 
     @Autowired
     RestTemplate restTemplate;
