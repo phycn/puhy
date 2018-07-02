@@ -1,4 +1,0 @@
-eureka                      注册中心
-    eureka-registercenter   服务注册中心
-    eureka-server           服务提供者
-    eureka-consumer         服务消费者

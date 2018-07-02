@@ -1,0 +1,16 @@
+server:
+    port: 8012
+spring:
+    application:
+        name: without-eureka
+hello-service:
+    ribbon:
+        listOfServers: localhost:8080,localhost:8079
+        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
