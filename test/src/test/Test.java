@@ -1,20 +1,49 @@
 package test;
 
-public class Test implements Runnable {
+import java.io.IOException;
+import java.net.URL;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.ServiceLoader;
 
-    private static Integer num = 0;
+public class Test {
+    public static void main(String[] args) throws IOException {
+        Enumeration<URL> dirs = Thread.currentThread().getContextClassLoader().getResources("test");
+        while (dirs.hasMoreElements()) {
+            URL url = dirs.nextElement();
+            String path = url.getPath();
+            System.out.println(path);
 
-    public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 1000; i++) {
-            Thread thread = new Thread(new Test());
-            thread.start();
-            thread.join();
+            //遍历目录下所有文件和目录
+            Files.walkFileTree(Paths.get(path), new SimpleFileVisitor<Path>(){
+
+                //访问文件时触发该方法
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
+                    String fileName = file.toFile().getName();
+                    String className = "test." + fileName.substring(0, fileName.length() - 6);
+//                    System.out.println(className);
+                    try {
+                        Class c = Class.forName(className);
+                        Class[] cs = c.getInterfaces();
+                        for (Class cc : cs) {
+                            if (cc.getName().equals("test.MyInterface")) {
+                                System.out.println(c.getName());
+                            }
+                        }
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    //代表继续访问的后续行为
+                    return FileVisitResult.CONTINUE;
+                }
+            });
         }
-    }
 
-    @Override
-    public void run() {
-        System.out.println(num++);
+        Class clazz = MyInterface.class;
+        System.out.println(clazz.getPackage().getName());
     }
 }
 
