@@ -1,5 +1,6 @@
 package test;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.*;
@@ -17,20 +18,20 @@ public class Test {
             System.out.println(path);
 
             //遍历目录下所有文件和目录
-            Files.walkFileTree(Paths.get(path), new SimpleFileVisitor<Path>(){
+            Files.walkFileTree(Paths.get(path), new SimpleFileVisitor<Path>() {
 
                 //访问文件时触发该方法
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     String fileName = file.toFile().getName();
                     String className = "test." + fileName.substring(0, fileName.length() - 6);
-//                    System.out.println(className);
                     try {
                         Class c = Class.forName(className);
                         Class[] cs = c.getInterfaces();
                         for (Class cc : cs) {
                             if (cc.getName().equals("test.MyInterface")) {
                                 System.out.println(c.getName());
+                                System.out.println(c.isAnnotationPresent(Autowired.class));
                             }
                         }
                     } catch (ClassNotFoundException e) {
@@ -41,9 +42,6 @@ public class Test {
                 }
             });
         }
-
-        Class clazz = MyInterface.class;
-        System.out.println(clazz.getPackage().getName());
     }
 }
 

@@ -19,6 +19,6 @@ feign                               声明式调用服务
     FeignInheritController          feign继承特性
     FeignInheritService             feign继承特性，继承公共接口，并指定具体服务
 
-hystrix                             部署在客户端的
+hystrix                             熔断器，部署在客户端的
     HystrixFirstService             hystrix初体验，指定失败回调
     HystrixFirstController          hystrix初体验，调用服务，调用失败会断路
