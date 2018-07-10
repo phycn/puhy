@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+    <!-- 配置 -->
+    <bean id="properties" class="java.util.HashMap">
+        <constructor-arg>
+            <map>
+                <entry key="bootstrap.servers" value="192.168.47.129:9092,192.168.47.130:9092,192.168.47.131:9092"/>
+                <entry key="key.deserializer" value="org.apache.kafka.common.serialization.StringDeserializer"/>
+                <entry key="value.deserializer" value="org.apache.kafka.common.serialization.StringDeserializer"/>
+                <entry key="group.id" value="phy-group"/>
+                <entry key="enable.auto.commit" value="true"/>
+                <entry key="auto.commit.interval.ms" value="1000"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="consumerFactory" class="org.springframework.kafka.core.DefaultKafkaConsumerFactory">
+        <constructor-arg ref="properties"/>
+    </bean>
+
+    <!-- 监听器 -->
+    <bean id="consumerListener" class="cn.puhy.kafka.spring.SpringKafkaConsumerListener"/>
+
+    <!-- 消费者容器配置信息 -->
+    <bean id="containerProperties" class="org.springframework.kafka.listener.config.ContainerProperties">
+        <!-- 指定主题 -->
+        <constructor-arg value="phy2"/>
+        <property name="messageListener" ref="consumerListener"/>
+    </bean>
+
+    <!-- 创建一个支持多线程的Listener容器 -->
+    <bean id="messageListenerContainer" class="org.springframework.kafka.listener.ConcurrentMessageListenerContainer"
+          init-method="doStart">
+        <constructor-arg ref="consumerFactory"/>
+        <constructor-arg ref="containerProperties"/>
+        <!-- 指定线程数 -->
+        <property name="concurrency" value="3"/>
+    </bean>
+</beans>
