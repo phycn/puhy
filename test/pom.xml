@@ -30,10 +30,10 @@
   		<artifactId>commons-net</artifactId>
   		<version>3.3</version>
   	</dependency>
-    <dependency>
+    <!--<dependency>
       <groupId>org.wildfly</groupId>
       <artifactId>wildfly-cli</artifactId>
       <version>8.2.1.Final</version>
-    </dependency>
+    </dependency>-->
   </dependencies>
 </project>

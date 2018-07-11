@@ -11,3 +11,6 @@ cn.puhy.kafka.spring                整合spring
     SpringKafkaConsumerListener     消费监听器
     SpringKafkaProducerListener     生产监听器
 
+cn.puhy.kafka.stream                流式处理
+    FirstStream                     快速入门
+
