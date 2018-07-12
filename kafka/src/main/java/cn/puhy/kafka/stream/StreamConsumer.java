@@ -17,7 +17,7 @@ import java.util.Properties;
 public class StreamConsumer {
 
     //kafka集群列表
-    private final static String BROKER_LIST = "192.168.47.129:9092,192.168.47.130:9092,192.168.47.131:9092";
+    private final static String BROKER_LIST = "localhost:9092";
 
     public static void main(String[] args) {
         Properties properties = new Properties();
@@ -36,7 +36,7 @@ public class StreamConsumer {
         properties.put(ConsumerConfig.AUTO_COMMIT_INTERVAL_MS_CONFIG, 1000);
 
         //实例化KafkaConsumer对象
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(properties);
+        KafkaConsumer<String, Long> consumer = new KafkaConsumer<>(properties);
 
         //需要订阅的主题
         List<String> list = new ArrayList<>();
@@ -45,8 +45,8 @@ public class StreamConsumer {
         consumer.subscribe(list);
         //拉取消息
         while (true) {
-            ConsumerRecords<String, String> records = consumer.poll(1000);
-            for (ConsumerRecord<String, String> record : records) {
+            ConsumerRecords<String, Long> records = consumer.poll(1000);
+            for (ConsumerRecord<String, Long> record : records) {
                 System.out.println(record.key() + "------>" + record.value());
             }
         }

@@ -13,4 +13,7 @@ cn.puhy.kafka.spring                整合spring
 
 cn.puhy.kafka.stream                流式处理
     FirstStream                     快速入门
+    KStreamJoin                     KStream连接操作
+    KTableJoin                      KTable连接操作
+    StreamConsumer                  消费查看效果
 
