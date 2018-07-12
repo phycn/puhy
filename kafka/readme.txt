@@ -16,4 +16,6 @@ cn.puhy.kafka.stream                流式处理
     KStreamJoin                     KStream连接操作
     KTableJoin                      KTable连接操作
     StreamConsumer                  消费查看效果
+    Conversion                      变换操作，过滤，分组，映射，有坑要注意
+    StreamLongConsumer              消费VALUE是Long的数据
 

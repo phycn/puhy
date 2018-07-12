@@ -48,7 +48,7 @@ public class KStreamJoin {
                 System.out.println("left: " + leftValue + ", right: " + rightValue);
                 return leftValue + rightValue;
             }
-            //JoinWindows.of 取之前最大时间及之后最大时间跨度的集合，比如
+            //JoinWindows.of 取之前最大时间及之后最大时间跨度的集合，还有before和after
         }, JoinWindows.of(TimeUnit.MINUTES.toMillis(1)));
 
         //将JOIN后的流输出到指定主题

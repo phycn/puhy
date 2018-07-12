@@ -1,16 +1,20 @@
 package cn.puhy.kafka.stream;
 
 import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.common.utils.Bytes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.kstream.*;
+import org.apache.kafka.streams.state.KeyValueStore;
 
 import java.util.Arrays;
 import java.util.Properties;
 
 /**
+ * 变换操作
+ *
  * @author puhongyu
  * 2018/7/12 11:24
  */
@@ -20,14 +24,13 @@ public class Conversion {
         //指定流处理应用的ID，必须配置
         config.put(StreamsConfig.APPLICATION_ID_CONFIG, "stream1");
         //kafka地址
-        config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "192.168.47.129:9092,192.168.47.130:9092,192.168.47.131:9092");
         //KEY的序列化和反序列化类
         config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         //VALUE的序列化和反序列化类
         config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
         StreamsBuilder builder = new StreamsBuilder();
-
         KStream<String, String> stream1 = builder.stream("stream1");
 
         //过滤流
@@ -50,7 +53,7 @@ public class Conversion {
                 return Arrays.asList(value.split(","));
             }
         });
-
+        //将Iterable的东西转换为KeyValue，也就是数据
         wordStream1 = wordStream1.map(new KeyValueMapper<String, String, KeyValue<? extends String, ? extends String>>() {
             @Override
             public KeyValue<? extends String, ? extends String> apply(String key, String value) {
@@ -58,8 +61,6 @@ public class Conversion {
                 return new KeyValue<>(value, value);
             }
         });
-//        wordStream1.to("phy1", Produced.with(Serdes.String(), Serdes.String()));
-
         //将单词按键分组
         KGroupedStream<String, String> wordGroup = wordStream1.groupBy(new KeyValueMapper<String, String, String>() {
             @Override
@@ -67,7 +68,9 @@ public class Conversion {
                 return value;
             }
         });
-        KTable<String, Long> words = wordGroup.count(Materialized.as("counts-store"));
+        //统计单词数
+        //这里有个坑，从主题phy1拉取数据时value的反序列化要用LongDeserializer
+        KTable<String, Long> words = wordGroup.count(Materialized.<String, Long, KeyValueStore<Bytes, byte[]>>as("counts-store"));
         words.toStream().to("phy1", Produced.with(Serdes.String(), Serdes.Long()));
 
         KafkaStreams streams = new KafkaStreams(builder.build(), config);
