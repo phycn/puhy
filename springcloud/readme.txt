@@ -8,7 +8,7 @@ eureka                              注册中心，里面也包含ribbon
         cn.puhy.eureka.config       自定义负载均衡策略，不要跟启动类放在一起
             RibbonConfiguration     自定负载均衡
 
-        ConsumerConfiguration       加载负载均衡，指定服务使用该策略的类，Ribbon配置的优先级：属性配置 > JAVA配置>ibbon默认配置
+        ConsumerConfiguration       加载负载均衡，指定服务使用该策略的类，Ribbon配置的优先级：属性配置 > JAVA配置 > ribbon默认配置
 
 without-eureka                      不使用eureka
 
@@ -19,6 +19,11 @@ feign                               声明式调用服务
     FeignInheritController          feign继承特性
     FeignInheritService             feign继承特性，继承公共接口，并指定具体服务
 
-hystrix                             熔断器，部署在客户端的
-    HystrixFirstService             hystrix初体验，指定失败回调
+hystrix                             熔断器，部署在客户端的，在ConsumerApplication上加了注解@EnableCircuitBreaker
+    HystrixFirstService             hystrix初体验，指定失败回调，也就是降级，使用注解的方式
     HystrixFirstController          hystrix初体验，调用服务，调用失败会断路
+
+    HystrixDemotionCommand          使用代码的方式实现降级
+    HystrixDemotionController       调用模拟降级
+
+    HystrixFusingController         调用模拟熔断

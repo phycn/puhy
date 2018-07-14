@@ -21,7 +21,7 @@ public class HystrixFirstService {
         return restTemplate.getForEntity("http://hello-service/hello", String.class).getBody();
     }
 
-    //失败回调方法
+    //失败回调方法，方法参数要跟指定@HystrixCommand了的方法相同
     public String firstError() {
         return "error";
     }

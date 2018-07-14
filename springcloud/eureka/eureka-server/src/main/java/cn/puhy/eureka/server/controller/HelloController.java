@@ -38,4 +38,27 @@ public class HelloController {
         user.setAddress("chongqing");
         return user;
     }
+
+    //模拟降级正常调用的服务
+    @PostMapping("/demotion")
+    public User demotion(@RequestBody User user) {
+        System.out.println("收到的：" + user);
+        user.setId(2233);
+        user.setName("调用成功");
+        user.setAddress("chengdu");
+        return user;
+    }
+
+    //模拟熔断
+    @GetMapping("/fusing")
+    public User fusing(@RequestParam("id") int id) throws Exception {
+        if (id == 10) {
+            throw new Exception("报错啦！！");
+        }
+        User user = new User();
+        user.setId(id);
+        user.setName("调用成功");
+        user.setAddress("china");
+        return user;
+    }
 }
