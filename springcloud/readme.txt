@@ -27,3 +27,5 @@ hystrix                             熔断器，部署在客户端的，在Consu
     HystrixDemotionController       调用模拟降级
 
     HystrixFusingController         调用模拟熔断
+
+    HystrixCurrentLimitingController    调用模拟限流

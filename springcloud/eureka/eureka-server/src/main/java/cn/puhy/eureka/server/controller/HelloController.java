@@ -61,4 +61,15 @@ public class HelloController {
         user.setAddress("china");
         return user;
     }
+
+    //模拟限流
+    @GetMapping("/currentLimiting")
+    public User currentLimiting(@RequestParam("id") int id) throws Exception {
+        Thread.sleep(3000);
+        User user = new User();
+        user.setId(id);
+        user.setName("调用成功");
+        user.setAddress("earth");
+        return user;
+    }
 }
