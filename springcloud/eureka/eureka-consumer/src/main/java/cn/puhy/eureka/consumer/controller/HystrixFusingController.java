@@ -27,7 +27,9 @@ public class HystrixFusingController {
         return restTemplate.getForObject("http://hello-service/fusing?id=" + id, User.class);
     }
 
-    public User error(Integer id) {
+    //增加Throwable对象可获取异常
+    public User error(Integer id, Throwable e) {
+        e.printStackTrace();
         User user = new User();
         user.setId(-1);
         user.setName("默认用户");
