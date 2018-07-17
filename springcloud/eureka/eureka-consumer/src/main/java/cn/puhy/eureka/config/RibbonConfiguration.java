@@ -8,7 +8,7 @@ import com.netflix.loadbalancer.RandomRule;
 
 /**
  * 该类为Ribbon的配置类
- * 注意：这个类要放在@SpringBootApplication注解能扫描到的包内，也就是ConsumerApplication类
+ * 注意：这个类不要放在@SpringBootApplication注解能扫描到的包内，也就是ConsumerApplication类
  */
 @Configuration
 public class RibbonConfiguration {

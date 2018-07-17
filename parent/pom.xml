@@ -93,7 +93,9 @@
         <module>../springcloud</module>
         <module>../log4j2</module>
         <module>../kafka</module>
+        <module>../bit-agent</module>
+        <module>../datastructure</module>
+        <module>../javaagent</module>
+        <module>../javase</module>
     </modules>
-
-
 </project>
