@@ -2,6 +2,7 @@ package cn.puhy.eureka.consumer.controller;
 
 import cn.puhy.springcloud.common.bean.User;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.cache.annotation.CacheResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,8 @@ public class HystrixCurrentLimitingController {
     //threadPoolProperties为线程池参数
     //commandProperties为命令参数
     @HystrixCommand(fallbackMethod = "error", groupKey = "helloService", threadPoolKey = "phyThreadPool")
+    //定义缓存，根据cacheKeyMethod指定的方法获取key【
+    @CacheResult(cacheKeyMethod = "getCacheKey")
     @GetMapping("/currentLimiting/{id}")
     public User currentLimiting(@PathVariable Integer id) {
         System.out.println("请求ID：" + id);
@@ -33,5 +36,9 @@ public class HystrixCurrentLimitingController {
         user.setId(-1);
         user.setName("默认用户");
         return user;
+    }
+
+    public Integer getCacheKey(Integer id) {
+        return id;
     }
 }
