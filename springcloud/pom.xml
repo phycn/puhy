@@ -12,6 +12,7 @@
         <module>common</module>
         <module>without-eureka</module>
         <module>feign</module>
+        <module>feign-hystrix</module>
     </modules>
     <packaging>pom</packaging>
 
