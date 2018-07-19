@@ -31,10 +31,11 @@ hystrix                             熔断器，部署在客户端的，在Consu
 
     HystrixFusingController         调用模拟熔断
 
-    HystrixCurrentLimitingController    调用模拟限流
+    HystrixCurrentLimitingController    调用模拟限流，也包括缓存
 
 feign-hystrix                       feign整合hystrix，配置里要开启hystrix
     FeignHystrixApplication         启动类，注意注解
     FeignHystrixController          入口，访问服务
     FeignHystrixFallback            降级逻辑实现
     FeignHystrixIntegration         指定具体服务和降级逻辑实现类
+    FeignDisableHystrixConfig       禁用hystrix
