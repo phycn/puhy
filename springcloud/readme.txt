@@ -1,9 +1,12 @@
 common                              公共东西
     InheritService                  feign继承特性
+    FeignHystrixService             Feign整合Hystrix的公共接口
 
 eureka                              注册中心，里面也包含ribbon
     eureka-registercenter           服务注册中心
     eureka-server                   服务提供者
+        InheritServiceController    feign相关，InheritService接口实现
+        FeignHystrixServiceController   feign整合hystrix相关，FeignHystrixService
     eureka-consumer                 服务消费者
         cn.puhy.eureka.config       自定义负载均衡策略，不要跟启动类放在一起
             RibbonConfiguration     自定负载均衡
@@ -28,4 +31,11 @@ hystrix                             熔断器，部署在客户端的，在Consu
 
     HystrixFusingController         调用模拟熔断
 
-    HystrixCurrentLimitingController    调用模拟限流
+    HystrixCurrentLimitingController    调用模拟限流，也包括缓存
+
+feign-hystrix                       feign整合hystrix，配置里要开启hystrix
+    FeignHystrixApplication         启动类，注意注解
+    FeignHystrixController          入口，访问服务
+    FeignHystrixFallback            降级逻辑实现
+    FeignHystrixIntegration         指定具体服务和降级逻辑实现类
+    FeignDisableHystrixConfig       禁用hystrix
