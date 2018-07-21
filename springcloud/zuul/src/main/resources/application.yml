@@ -1,0 +1,10 @@
+server:
+  port: 9003
+spring:
+  application:
+    name: zuul-api-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8899/eureka/,http://localhost:8898/eureka/

@@ -43,3 +43,6 @@ feign-hystrix                       feign整合hystrix，配置里要开启hystr
 
 
    application-c1.properties        配置了原始监控，全是JSON的
+
+zuul                                API网关，http://localhost:8080/hello可通过网关访问，http://localhost:9003/hello-service/hello
+    ZuulApplication                 启动类
