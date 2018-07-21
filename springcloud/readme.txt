@@ -39,3 +39,7 @@ feign-hystrix                       feign整合hystrix，配置里要开启hystr
     FeignHystrixFallback            降级逻辑实现
     FeignHystrixIntegration         指定具体服务和降级逻辑实现类
     FeignDisableHystrixConfig       禁用hystrix
+
+
+
+   application-c1.properties        配置了原始监控，全是JSON的

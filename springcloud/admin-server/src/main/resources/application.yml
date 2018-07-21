@@ -1,0 +1,10 @@
+server:
+  port: 19002
+spring:
+  application:
+    name: admin-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8899/eureka/,http://localhost:8898/eureka/
+

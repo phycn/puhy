@@ -14,6 +14,8 @@
         <module>feign</module>
         <module>feign-hystrix</module>
         <module>dashboard</module>
+        <module>admin-server</module>
+        <module>zuul</module>
     </modules>
     <packaging>pom</packaging>
 
