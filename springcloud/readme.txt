@@ -46,3 +46,4 @@ feign-hystrix                       feign整合hystrix，配置里要开启hystr
 
 zuul                                API网关，http://localhost:8080/hello可通过网关访问，http://localhost:9003/hello-service/hello，同时也实现了ribbon
     ZuulApplication                 启动类
+    MyFilter                        请求过滤器
