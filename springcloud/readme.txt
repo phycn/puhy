@@ -39,3 +39,10 @@ feign-hystrix                       feign整合hystrix，配置里要开启hystr
     FeignHystrixFallback            降级逻辑实现
     FeignHystrixIntegration         指定具体服务和降级逻辑实现类
     FeignDisableHystrixConfig       禁用hystrix
+
+
+
+   application-c1.properties        配置了原始监控，全是JSON的
+
+zuul                                API网关，http://localhost:8080/hello可通过网关访问，http://localhost:9003/hello-service/hello，同时也实现了ribbon
+    ZuulApplication                 启动类
