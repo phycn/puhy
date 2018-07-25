@@ -16,6 +16,7 @@
         <module>dashboard</module>
         <module>admin-server</module>
         <module>zuul</module>
+        <module>config</module>
     </modules>
     <packaging>pom</packaging>
 

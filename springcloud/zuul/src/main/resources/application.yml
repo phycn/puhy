@@ -17,4 +17,5 @@ zuul:
     hello:
       path: /hello/**
       serviceId: hello-service
+  #ignored-patterns: /**/admin/**     #忽略的路径
   #ignored-services:  hello-service  #忽略的服务，不能通过zuul访问
