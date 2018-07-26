@@ -11,4 +11,8 @@ spring:
           username: 15680609933                               #git仓库用户名
           password: phy286964071                              #git仓库用户密码
           #search-paths:                                       #配置仓库路径下的相对搜索位置
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
 

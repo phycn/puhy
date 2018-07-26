@@ -11,7 +11,7 @@
 	<!-- 另外一种方式引用属性文件 -->
 	<!-- <context:property-placeholder location="classpath:cn/puhy/spring/outerProperty/my.properties"/> -->
 	<!-- 引入属性文件 -->
-	<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" 
+	<!-- <bean class="org.springframework.beans.factory.configserver.PropertyPlaceholderConfigurer"
 		p:location="classpath:cn/puhy/spring/outerProperty/my.properties" 
 		p:fileEncoding="utf-8" /> -->
 	<bean class="cn.puhy.spring.outerProperty.MyPropertyPlaceholderConfigurer" 

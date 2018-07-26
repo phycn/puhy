@@ -1,0 +1,6 @@
+server:
+  port: 19988
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
