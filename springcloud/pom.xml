@@ -17,6 +17,7 @@
         <module>admin-server</module>
         <module>zuul</module>
         <module>config</module>
+        <module>config-client</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -39,7 +40,7 @@
     <dependencies>
         <!--<dependency>-->
         <!--<groupId>org.springframework.cloud</groupId>-->
-        <!--<artifactId>spring-cloud-starter-config</artifactId>-->
+        <!--<artifactId>spring-cloud-starter-configserver</artifactId>-->
         <!--</dependency>-->
         <!--<dependency>-->
         <!--<groupId>org.springframework.cloud</groupId>-->

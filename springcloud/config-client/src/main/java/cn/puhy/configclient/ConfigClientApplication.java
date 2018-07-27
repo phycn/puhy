@@ -1,17 +1,15 @@
-package cn.puhy.config;
+package cn.puhy.configclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.config.server.EnableConfigServer;
 
 /**
  * @author PUHY
- * 2018-07-25 23:32
+ * 2018-07-26 23:35
  */
-@EnableConfigServer
 @SpringBootApplication
-public class ConfigApplication {
+public class ConfigClientApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ConfigApplication.class);
+        SpringApplication.run(ConfigClientApplication.class);
     }
 }

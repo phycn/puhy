@@ -51,3 +51,5 @@ zuul                                API网关，http://localhost:8080/hello可�
 
 config                              配置中心，http://localhost:9004/master/config-dev.yml
     application.yml                 配置中心的配置文件
+
+config-client                       从配置中心获取配置

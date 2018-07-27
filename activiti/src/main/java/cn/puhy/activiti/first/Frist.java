@@ -8,8 +8,8 @@ public class Frist {
     public static void main(String[] args) {
 
         //创建流程引擎的另外一种方式
-//        ProcessEngineConfiguration config = ProcessEngineConfiguration.createProcessEngineConfigurationFromResourceDefault();
-//        ProcessEngine engine = config.buildProcessEngine();
+//        ProcessEngineConfiguration configserver = ProcessEngineConfiguration.createProcessEngineConfigurationFromResourceDefault();
+//        ProcessEngine engine = configserver.buildProcessEngine();
         //创建流程引擎
         ProcessEngine engine = ProcessEngines.getDefaultProcessEngine();
         //获取流程存储服务组件
