@@ -4,3 +4,14 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+spring:
+  cloud:
+    stream:
+      kafka:
+        binder:
+          brokers: 192.168.47.129:9092,192.168.47.130:9092          #kafka地址

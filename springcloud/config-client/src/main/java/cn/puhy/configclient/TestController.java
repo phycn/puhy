@@ -12,16 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
  * 2018-07-26 23:35
  */
 @RestController
+@RefreshScope
 public class TestController {
 
     @Autowired
     private Environment environment;
 
-    @Value("${version}")
-    String version;
+    @Value("${phy}")
+    String phy;
 
-    @GetMapping("/version")
-    public String version() {
-        return version;
+    //解密后的明文
+    @Value("${password}")
+    private String password;
+
+    @GetMapping("/phy")
+    public String phy() {
+        return phy;
+    }
+
+    @GetMapping("/password")
+    public String password() {
+        return password;
     }
 }
