@@ -4,8 +4,9 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh
+spring:
+  rabbitmq:                                             #rabbitmq配置
+    host: 117.48.203.244
+    port: 5672
+    username: phy
+    password: phy

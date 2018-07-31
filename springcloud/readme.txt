@@ -62,4 +62,5 @@ config                              配置中心
 
 config-client                       从配置中心获取配置
     bootstrap.yml                   必要的配置文件，先加载
-    TestController                  测试从git获取配置，@RefreshScope为配置有变动会进行更新
+    TestController                  测试从git获取配置，@RefreshScope为配置有变动会进行更新，需要向配置中心发送POST请求，例如：http://localhost:9004/actuator/bus-refresh，
+                                    可以用curl -X POST http://localhost:9004/actuator/bus-refresh/ 向配置中心发

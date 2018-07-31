@@ -28,3 +28,8 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh                            #spirngboot2.0后的配置方式，表示可以访问这个站点
