@@ -10,17 +10,20 @@ spring:
           uri: https://gitee.com/puhongyu/config.git    #git仓库位置，还可以这样配置https://gitee.com/puhongyu/{application}/{profile}/{label}，git项目就必须是application了
           username: 15680609933                         #git仓库用户名
           password: phy286964071                        #git仓库用户密码
+  rabbitmq:                                             #rabbitmq配置
+    host: 117.48.203.244
+    port: 5672
+    username: phy
+    password: phy
           #search-paths: {application}                  #配置仓库路径下的相对搜索位置
           #clone-on-start: true                         #为true启动时就clone仓库到本地，默认是在配置被首次请求时，config server才会clone git仓库
           #basedir:                                     #clone下来的配置文件指定本地存放目录
         #native:
         #  search-locations:                            #指定具体的本地配置文件位置
-    stream:
-      kafka:
-        binder:
-          brokers: 192.168.47.129:9092,192.168.47.130:9092  #kafka地址
   #profiles:
   #  active: native                                     #使用本地配置文件，默认会在src/main/resource目录下搜索配置文件
+
+
 eureka:
   client:
     register-with-eureka: false

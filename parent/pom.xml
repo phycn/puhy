@@ -97,5 +97,6 @@
         <module>../datastructure</module>
         <module>../javaagent</module>
         <module>../javase</module>
+        <module>../leetcode</module>
     </modules>
 </project>

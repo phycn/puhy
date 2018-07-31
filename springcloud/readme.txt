@@ -53,6 +53,12 @@ config                              配置中心
     application.yml                 配置中心的配置文件
     bootstrap.yml                   配置了对称密钥，加密：http://localhost:9004/encrypt post传输明文，解密http://localhost:9004/decrypt post传输明文
                                     还需要将JCE的jar包放入JDK中，在git上配置的密文需要加上{cipher}
+    rabbitmq                        spring cloud bus整合rabbitmq
+        Producer                    rabbitmq生产者
+        Consumer                    Consumer消费者
+        RabbitConfig                rabbitmq配置
+
+    ConfigController                发送消息
 
 config-client                       从配置中心获取配置
     bootstrap.yml                   必要的配置文件，先加载
