@@ -8,6 +8,7 @@ eureka                              注册中心，里面也包含ribbon
         InheritServiceController    feign相关，InheritService接口实现
         FeignHystrixServiceController   feign整合hystrix相关，FeignHystrixService
     eureka-consumer                 服务消费者
+        ConsumerController          使用RestTemplate调用服务
         cn.puhy.eureka.config       自定义负载均衡策略，不要跟启动类放在一起
             RibbonConfiguration     自定负载均衡
 
