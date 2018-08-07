@@ -67,3 +67,9 @@ config-client                       从配置中心获取配置
                                     可以用curl -X POST http://localhost:9004/actuator/bus-refresh/ 向配置中心发
 
     PeopleConfig                    获取GIT上配置文件里类似people.name这样的属性
+
+
+stream
+    StreamClient
+    StreamProducer                  消息生产者
+    StreamConsumer                  消息消费者

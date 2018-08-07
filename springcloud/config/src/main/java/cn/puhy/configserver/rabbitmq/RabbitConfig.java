@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
+    //创建队列
     @Bean
     public Queue helloQueue() {
         return new Queue("hello");

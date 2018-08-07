@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: stream
+  rabbitmq:                                             #rabbitmq配置
+    host: 117.48.203.244
+    port: 5672
+    username: phy
+    password: phy
+  cloud:
+    stream:
+      bindings:
+        stream2:                                        #指定队列为消费组，属于同一消费组只能一个成员消费
+          group: stream2-group                          #消费组名
+          content-type: application/json
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+server:
+  port: 9010
