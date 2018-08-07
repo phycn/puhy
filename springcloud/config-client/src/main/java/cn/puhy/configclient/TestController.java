@@ -18,11 +18,14 @@ public class TestController {
     @Autowired
     private Environment environment;
 
+    @Autowired
+    private PeopleConfig peopleConfig;
+
     @Value("${phy}")
     String phy;
 
     //解密后的明文
-    @Value("${password}")
+//    @Value("${password}")
     private String password;
 
     @GetMapping("/phy")
@@ -33,5 +36,10 @@ public class TestController {
     @GetMapping("/password")
     public String password() {
         return password;
+    }
+
+    @GetMapping("/people")
+    public String people() {
+        return peopleConfig.getName() + " " + peopleConfig.getAge() + " " + peopleConfig.getAddr();
     }
 }

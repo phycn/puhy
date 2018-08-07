@@ -1,9 +1,5 @@
 server:
   port: 9005
-eureka:
-  client:
-    register-with-eureka: false
-    fetch-registry: false
 spring:
   rabbitmq:                                             #rabbitmq配置
     host: 117.48.203.244
