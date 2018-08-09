@@ -11,7 +11,7 @@ package cn.puhy.leetcode.array;
 public class CentralIndex {
     public static int pivotIndex(int[] nums) {
         int length = nums.length;
-        for (int i = 1; i < length - 1; i++) {
+        for (int i = 0; i < length; i++) {
             int left = 0;
             int right = 0;
             for (int j = 0; j < i; j++) {
@@ -28,7 +28,7 @@ public class CentralIndex {
     }
 
     public static void main(String[] args) {
-        int[] nums = {2, 9, 4, 7, 3, 20, 2};
+        int[] nums = {-1, -1, 0, 1, 1, 0};
         System.out.println(pivotIndex(nums));
     }
 }
