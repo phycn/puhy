@@ -11,7 +11,7 @@ eureka:
 
 zuul:
   routes:
-    consumer:
+    consumer:                       #规则名称
       path: /consumer/**            #需要拦截的请求
       serviceId: eureka-consumer    #为拦截的请求映射的服务
     hello:
