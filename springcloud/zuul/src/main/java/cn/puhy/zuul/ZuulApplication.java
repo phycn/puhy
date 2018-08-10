@@ -22,8 +22,8 @@ public class ZuulApplication {
         return new MyFilter();
     }
 
-    @Bean
-    public ErrorFilter setErrorFilter() {
-        return new ErrorFilter();
-    }
+//    @Bean
+//    public ErrorFilter setErrorFilter() {
+//        return new ErrorFilter();
+//    }
 }
