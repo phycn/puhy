@@ -4,6 +4,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.springframework.cloud.netflix.zuul.filters.support.FilterConstants;
+import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,19 +35,14 @@ public class MyFilter extends ZuulFilter {
     //过滤器的具体逻辑
     @Override
     public Object run() {
+        //获取上下文
         RequestContext ctx = RequestContext.getCurrentContext();
-        try {
-            HttpServletRequest request = ctx.getRequest();
-            String token = request.getParameter("token");
-            System.out.println("token: " + token);
-            if ("phy".equals(token)) {
-                throw new RuntimeException("MyFilter error");
-            }
-        } catch (Exception e) {
-            System.out.println("qqqqqqqqqqqqqqqqqqqqqq");
-            ctx.set("error.status_code", 500);
-            ctx.set("error.exception", e);
-            ctx.set("error.message", "发生了一个错误");
+        HttpServletRequest request = ctx.getRequest();
+        String token = request.getParameter("token");
+        System.out.println("token: " + token);
+        if (StringUtils.isEmpty(token)) {
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(401);
         }
         return null;
     }

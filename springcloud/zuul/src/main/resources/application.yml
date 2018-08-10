@@ -14,6 +14,7 @@ zuul:
     consumer:
       path: /consumer/**            #需要拦截的请求
       serviceId: eureka-consumer    #为拦截的请求映射的服务
+      sensitiveHeaders:             #传递cookie到这个服务
     hello:
       path: /hello/**
       serviceId: hello-service

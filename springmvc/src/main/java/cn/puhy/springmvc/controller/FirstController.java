@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.WebUtils;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 //标注为处理请求的控制器
 @Controller
@@ -69,9 +71,18 @@ public class FirstController {
 
     //使用Servlet API对象作为入参
     @RequestMapping(value = "/handle4")
-    public String handle4(HttpServletRequest request) {
+    public String handle4(HttpServletRequest request, HttpServletResponse response) {
         String name = WebUtils.findParameterValue(request, "name");
         System.out.println(name);
+        Cookie[] cookies = request.getCookies();
+        for (Cookie c : cookies) {
+            System.out.println("cookie: " + c.getName() + "-" + c.getValue());
+        }
+        //生成cookie
+        Cookie cookie = new Cookie("name", name);
+        cookie.setPath("/");
+        cookie.setMaxAge(10);
+        response.addCookie(cookie);
         return "first/success";
     }
 

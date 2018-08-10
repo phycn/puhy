@@ -49,6 +49,7 @@ zuul                                API网关，http://localhost:8080/hello可�
     ZuulApplication                 启动类
     MyFilter                        请求过滤器
     MyFallbackProvider              容错降级，粒度是微服务级别，而不是API
+    RateLimitFilter                 限流过滤器
 
 config                              配置中心
     application.yml                 配置中心的配置文件

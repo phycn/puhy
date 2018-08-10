@@ -9,8 +9,9 @@ public class Log4jTest {
 	public static void main(String[] args) throws InterruptedException {
 
 		while (true) {
-			Thread.sleep(50);
+			Thread.sleep(1000);
 			logger.debug("蒲红宇11112222");
+			System.out.println("hehe nmb");
 		}
 	}
 }
