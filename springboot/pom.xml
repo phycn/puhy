@@ -31,7 +31,7 @@
                 <optional>true</optional>
             </dependency>
             <!-- 测试启动器 -->
-            <dependency>。
+            <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <version>1.5.10.RELEASE</version>
