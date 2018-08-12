@@ -30,7 +30,7 @@ hystrix                             熔断器，部署在客户端的，在Consu
     HystrixDemotionCommand          使用代码的方式实现降级
     HystrixDemotionController       调用模拟降级
 
-    HystrixFusingController         调用模拟熔断
+    HystrixFusingController         调用模拟熔断，注意看看@HystrixCommand
 
     HystrixCurrentLimitingController    调用模拟限流，也包括缓存
 
@@ -74,3 +74,7 @@ stream
     StreamClient
     StreamProducer                  消息生产者
     StreamConsumer                  消息消费者
+
+dashboard                           hystrix监控，进入http://localhost:8030/hystrix，配置http://localhost:8081/actuator/hystrix.stream
+                                    就可以看到hystrix的监控情况
+

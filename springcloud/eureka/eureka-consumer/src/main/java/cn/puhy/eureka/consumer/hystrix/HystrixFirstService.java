@@ -1,5 +1,6 @@
 package cn.puhy.eureka.consumer.hystrix;
 
+import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
  * 2018-07-01 22:47
  */
 @Service
+@DefaultProperties(defaultFallback = "firstError")      //默认的回调方法
 public class HystrixFirstService {
 
     @Autowired

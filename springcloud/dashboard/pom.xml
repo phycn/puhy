@@ -11,5 +11,10 @@
 
     <artifactId>dashboard</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>
+    </dependencies>
 </project>
