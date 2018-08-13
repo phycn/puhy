@@ -13,3 +13,8 @@ eureka:
 hello-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+logging:
+  level:
+    root: debug
+

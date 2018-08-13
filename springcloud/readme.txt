@@ -78,3 +78,11 @@ stream
 dashboard                           hystrix监控，进入http://localhost:8030/hystrix，配置http://localhost:8081/actuator/hystrix.stream
                                     就可以看到hystrix的监控情况
 
+sleuth和zipkin                      链路跟踪
+    1、启动zipkin
+    官网上有
+    2、配置
+    spring.zipkin.base-url=http://localhost:9411/
+    spring.sleuth.sampler.probability=1
+    3、http://localhost:9411查看
+
