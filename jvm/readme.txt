@@ -9,3 +9,6 @@ cn.puhy.jvm.classload           类加载
 cn.puhy.jvm.reference           引用
     SoftRef                     软引用
     WeakRef                     弱引用
+
+MemOverflow                     堆内存溢出
+
