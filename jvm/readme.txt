@@ -11,4 +11,5 @@ cn.puhy.jvm.reference           引用
     WeakRef                     弱引用
 
 MemOverflow                     堆内存溢出
+MetaOverflow                    元数据区溢出
 

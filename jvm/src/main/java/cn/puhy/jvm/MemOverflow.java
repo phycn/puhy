@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * 堆内存溢出
- * -Xmx16M -Xms16M
+ * -Xmx16M -Xms16M -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/Users/puhongyu/phy/tmp/memoverflow.hprof
  *
  * @author puhongyu
  * 2018/8/15 07:48
