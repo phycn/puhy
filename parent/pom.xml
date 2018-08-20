@@ -87,16 +87,15 @@
         <module>../springSourceStudy</module>
         <!-- 自己实现的模拟spring mvc框架 -->
         <module>../mymvc</module>
-        <module>../api-gateway</module>
         <module>../highConcurrency</module>
         <module>../springboot</module>
         <module>../springcloud</module>
         <module>../log4j2</module>
         <module>../kafka</module>
-        <module>../bit-agent</module>
         <module>../datastructure</module>
         <module>../javaagent</module>
         <module>../javase</module>
         <module>../leetcode</module>
+        <module>../mybatis-plus</module>
     </modules>
 </project>

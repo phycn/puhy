@@ -5,7 +5,10 @@
 	<groupId>cn.puhy.study</groupId>
 	<artifactId>mybatis</artifactId>
 	<version>1.0</version>
-	<packaging>jar</packaging>
+    <modules>
+        <module>../mybatis-plus</module>
+    </modules>
+    <packaging>pom</packaging>
 
 	<name>mybatis</name>
 	<url>http://maven.apache.org</url>
