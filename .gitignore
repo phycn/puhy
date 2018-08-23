@@ -8,3 +8,4 @@ csii/
 .class
 parent/classes/production/
 test/
+.DS_Store
