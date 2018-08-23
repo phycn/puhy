@@ -12,6 +12,7 @@
     <modules>
         <module>springboot-first</module>
         <module>springboot-mybatis</module>
+        <module>springboot-starter-test</module>
     </modules>
 
     <dependencyManagement>

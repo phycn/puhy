@@ -25,3 +25,5 @@ springboot-first            第一个springboot
     EnvConditional          根据env属性来判断是否加载
 
 springboot-mybatis          整合mybatis
+
+springboot-starter-test     自定义starter测试
