@@ -80,7 +80,7 @@ dashboard                           hystrix监控，进入http://localhost:8030/
 
 sleuth和zipkin                      链路跟踪
     1、启动zipkin
-    官网上有
+    java -jar zipkin.java
     2、配置
     spring.zipkin.base-url=http://localhost:9411/
     spring.sleuth.sampler.probability=1
