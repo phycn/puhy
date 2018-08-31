@@ -97,5 +97,20 @@
         <module>../javase</module>
         <module>../leetcode</module>
         <module>../mybatis-plus</module>
+        <module>../btrace</module>
+        <module>../designpattern</module>
+        <module>../highConcurrency2</module>
+        <module>../jarslink</module>
+        <module>../jarslink-a</module>
+        <module>../jedis</module>
+        <module>../jvm</module>
+        <module>../mybatisSourceStudy</module>
+        <module>../quartz</module>
+        <module>../servlet</module>
+        <module>../shardingjdbc</module>
+        <module>../springboot-starter</module>
+        <module>../springmvc</module>
+        <module>../springmvcSourceStudy</module>
+        <module>../zookeeper</module>
     </modules>
 </project>
