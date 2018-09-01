@@ -110,8 +110,14 @@ cn.puhy.spring.spel                     动态表达语言
 
 cn.puhy.spring.transaction              事务管理
     JDBCTransaction.java                JDBC事务支持
+    SpringTransactionExample.java       代码方式实现spring事务
 
-cn.puhy.spring.transaction.xmlcfg    XML配置声明式事务
+cn.puhy.spring.transaction.isolation    隔离级别
+    ReadUncommittedExample.java         未提交读，发生了脏读
+    ReadcommittedExample.java           已提交读，发生了不可重复读
+    ReadRepeatableExample.java          可重复读
+
+cn.puhy.spring.transaction.xmlcfg       XML配置声明式事务
     tx.xml                              xml配置事务
 
 cn.puhy.spring.transaction.annotationcfg    注解配置声明式事务
