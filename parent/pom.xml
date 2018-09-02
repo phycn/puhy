@@ -112,5 +112,6 @@
         <module>../springmvc</module>
         <module>../springmvcSourceStudy</module>
         <module>../zookeeper</module>
+        <module>../mixed</module>
     </modules>
 </project>
