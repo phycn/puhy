@@ -1,3 +1,5 @@
+principle           设计原则
+
 singleton           单例模式
     Singleton1      懒汉式，线程不安全
     Singleton2      懒汉式，线程安全
