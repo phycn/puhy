@@ -46,9 +46,9 @@ public class GuavaCacheExample1 {
             Thread.sleep(11000);
 
             log.info("{}", cache.get("key5")); // -1
-
+            //命中数和未命中数
             log.info("{},{}", cache.stats().hitCount(), cache.stats().missCount());
-
+            //命中率和未命中率
             log.info("{},{}", cache.stats().hitRate(), cache.stats().missRate());
         } catch (Exception e) {
             log.error("cache exception", e);
