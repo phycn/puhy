@@ -8,11 +8,13 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class RateLimiterExample2 {
 
+    ////每秒允许5个请求通过
     private static RateLimiter rateLimiter = RateLimiter.create(5);
 
     public static void main(String[] args) throws Exception {
 
         for (int index = 0; index < 100; index++) {
+            //获取令牌，没有获取到会阻塞
             rateLimiter.acquire();
             handle(index);
         }

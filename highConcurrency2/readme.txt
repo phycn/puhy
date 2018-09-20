@@ -97,3 +97,7 @@ deadLock                            死锁
 cache                               缓存
     GuavaCacheExample1              guava缓存
     GuavaCacheExample2              guava缓存
+
+rateLimiter                         限流
+    RateLimiterExample1             RateLimiter令牌桶
+    RateLimiterExample2             RateLimiter令牌桶
