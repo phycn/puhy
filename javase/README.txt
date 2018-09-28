@@ -196,3 +196,10 @@ phy.jdk8
 	StreamTest      流
 	MapStreamTest   映射流
 	Jdk8InterfaceTest   接口静态方法和默认方法
+
+phy.jdk11
+    LocalVariable           局部变量类型推断
+    StringReinforce         字符串加强
+    CollectionReinforce     集合加强
+    StreamReinforce         Stream加强
+    HttpClient              http客户端
