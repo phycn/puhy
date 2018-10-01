@@ -1,4 +1,20 @@
-principle           设计原则
+principle                   设计原则
+    openclose               开放封闭原则
+    dependenceinversion     依赖倒置原则
+    singleresponsibility    单一职责原则
+    interfacesegregation    接口隔离原则
+    demeter                 迪米特原则
+    liskovsubstitution      里氏替换原则
+    compositionaggregation  组合聚合复用原则
+
+creational                  创建型设计模式
+    simplefactory           简单工厂，并不属于23种之一
+    factorymethod           工厂模式
+    abstractfactory         抽象工厂模式，扩展产品等级困难
+    builder                 建造者模式
+
+
+
 
 singleton           单例模式
     Singleton1      懒汉式，线程不安全
