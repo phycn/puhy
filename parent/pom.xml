@@ -113,5 +113,6 @@
         <module>../springmvcSourceStudy</module>
         <module>../zookeeper</module>
         <module>../mixed</module>
+        <module>../rabbitmq</module>
     </modules>
 </project>
