@@ -21,4 +21,9 @@ public class Node {
     public void display() {
         System.out.print(data + " ");
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(data);
+    }
 }

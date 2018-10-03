@@ -1,9 +1,11 @@
 cn.puhy.datastructure.array             数组
+    RecursionSum                        使用递归求和，而不使用循环
 
 cn.puhy.datastructure.linkedlist        链表
     MyDequeLinkedList                   双端链表
     MyDoubleLinkedList                  双向链表
     MyLinkedList                        单链表
+    LRULinkedList                       LRU链表
 
 cn.puhy.datastructure.queue             队列
 
