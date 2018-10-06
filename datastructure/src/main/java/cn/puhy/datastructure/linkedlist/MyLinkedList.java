@@ -23,8 +23,7 @@ public class MyLinkedList {
     }
 
     /**
-     * 在头节点位置插入
-     *
+      *
      * @param data
      */
     public void insertFirst(long data) {
@@ -34,6 +33,22 @@ public class MyLinkedList {
         //新节点变为头节点
         first = node;
         length++;
+    }
+
+    /**
+     * 链表反转
+     */
+    public void reversalList() {
+        reversal(first);
+    }
+
+    private void reversal(Node node) {
+        if (node.next == null) {
+            System.out.print(node + " ");
+        } else {
+            reversal(node.next);
+            System.out.print(node + " ");
+        }
     }
 
     /**
@@ -117,7 +132,7 @@ public class MyLinkedList {
     }
 
     public static void main(String[] args) throws Exception {
-        MyLinkedList linkedList = new MyLinkedList();
+        /*MyLinkedList linkedList = new MyLinkedList();
         linkedList.insertFirst(11);
         linkedList.insertFirst(10);
         linkedList.insertFirst(9);
@@ -133,6 +148,15 @@ public class MyLinkedList {
         linkedList.delete(3);
         linkedList.display();
 
-        System.out.println(linkedList.size());
+        System.out.println(linkedList.size());*/
+
+        MyLinkedList linkedList = new MyLinkedList();
+        linkedList.insertFirst(11);
+        linkedList.insertFirst(10);
+        linkedList.insertFirst(9);
+        linkedList.insertFirst(66);
+//        linkedList.display();
+
+        linkedList.reversalList();
     }
 }
