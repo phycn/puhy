@@ -203,3 +203,6 @@ phy.jdk11
     CollectionReinforce     集合加强
     StreamReinforce         Stream加强
     HttpClient              http客户端
+
+phy.function                函数接口
+    FunctionDemo            Function

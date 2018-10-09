@@ -12,6 +12,7 @@ creational                  创建型设计模式
     factorymethod           工厂模式
     abstractfactory         抽象工厂模式，扩展产品等级困难
     builder                 建造者模式
+    singleton               单例模式
 
 
 
@@ -21,7 +22,7 @@ singleton           单例模式
     Singleton2      懒汉式，线程安全
     Singleton3      恶汉式，线程安全，没有懒加载
     Singleton4      双重锁，线程安全，高性能
-    Singleton5      静态内部类实现
+    Singleton5      静态内部类实现，类加载机制，同一个类不可能加载多次
     Singleton6      枚举实现，最好的单例？
 
 factory             工厂模式

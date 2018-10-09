@@ -23,7 +23,6 @@ public class MyLinkedList {
     }
 
     /**
-      *
      * @param data
      */
     public void insertFirst(long data) {
@@ -36,7 +35,7 @@ public class MyLinkedList {
     }
 
     /**
-     * 链表反转
+     * 链表反转，只是单纯地输出
      */
     public void reversalList() {
         reversal(first);
@@ -49,6 +48,109 @@ public class MyLinkedList {
             reversal(node.next);
             System.out.print(node + " ");
         }
+    }
+
+    // 检测环，快慢指针
+    public boolean checkLoop(Node node) {
+        if (node == null) {
+            return false;
+        }
+
+        Node fast = node.next;
+        Node slow = node;
+
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * 合并两个有序链表
+     *
+     * @param one
+     * @param two
+     * @return
+     */
+    public Node mergeSortedLists(Node one, Node two) {
+        if (one == null) {
+            return two;
+        }
+        if (two == null) {
+            return one;
+        }
+
+        Node onePointer = one;
+        Node twoPointer = two;
+        Node head;
+        if (one.data < two.data) {
+            head = one;
+            onePointer = onePointer.next;
+        } else {
+            head = two;
+            twoPointer = twoPointer.next;
+        }
+
+        Node newPointer = head;
+        while (onePointer != null && twoPointer != null) {
+            if (onePointer.data < twoPointer.data) {
+                newPointer.next = onePointer;
+                onePointer = onePointer.next;
+            } else {
+                newPointer.next = twoPointer;
+                twoPointer = twoPointer.next;
+            }
+            newPointer = newPointer.next;
+        }
+
+        // 尾巴处理，就是其中一个链表已完，另外一个还有
+        if (onePointer != null) {
+            newPointer.next = onePointer;
+        } else {
+            newPointer.next = twoPointer;
+        }
+
+        return head;
+    }
+
+    /**
+     * 删除倒数第k个元素
+     *
+     * @param k
+     * @return
+     */
+    public Node deleteLastKth(int k) {
+        int count = length - k;
+        Node delete = first;
+        for (int i = 0; i < count; i++) {
+            delete = delete.next;
+        }
+        try {
+            delete(count);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return delete;
+    }
+
+    /**
+     * 找出中间节点
+     *
+     * @return
+     */
+    public Node findMiddleNode(Node node) {
+        Node fast = node;
+        Node slow = node;
+        while (fast.next.next != null && slow.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        return slow;
     }
 
     /**
@@ -155,8 +257,10 @@ public class MyLinkedList {
         linkedList.insertFirst(10);
         linkedList.insertFirst(9);
         linkedList.insertFirst(66);
-//        linkedList.display();
+        linkedList.display();
+        linkedList.deleteLastKth(2);
+        linkedList.display();
 
-        linkedList.reversalList();
+//        linkedList.reversalList();
     }
 }
