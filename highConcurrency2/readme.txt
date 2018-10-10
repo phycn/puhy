@@ -78,6 +78,9 @@ aqs                                 同步器
     FutureTaskExample               FutureTask
     ForkJoinTaskExample             ForkJoin
 
+exchanger
+    ExchangerExample                线程间数据交换
+
 lock                                ReentrantLock
     LockExample2                    ReentrantLock
     LockExample3                    读写锁
