@@ -206,3 +206,8 @@ phy.jdk11
 
 phy.function                函数接口
     FunctionDemo            Function
+    MyPredicate             Predicate
+    MyConsumer              Consumer
+    MySupplier              Supplier
+    MyUnaryOperator         UnaryOperator
+    MyBinaryOperator        BinaryOperator
