@@ -27,7 +27,7 @@ singleton           单例模式
 
 factory             工厂模式
 
-abstractfactory     抽象工厂模式，扩展产品族困难，因为要去改AbstractCreator
+abstractfactory     抽象工厂模式，扩展产品等级困难，因为要去改AbstractCreator
 
 template            模板模式
 
