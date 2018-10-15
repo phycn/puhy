@@ -15,25 +15,29 @@ public class MyEventSource {
         this.listeners = new ArrayList<>();
     }
 
-    public void register(MyEventListener listener) {    // 1
+    // 1-注册监听器
+    public void register(MyEventListener listener) {
         listeners.add(listener);
     }
 
     public void newEvent(MyEvent event) {
         for (MyEventListener listener :
                 listeners) {
-            listener.onNewEvent(event);     // 2
+            // 2-向监听器发出新事件
+            listener.onNewEvent(event);
         }
     }
 
     public void eventStopped() {
         for (MyEventListener listener :
                 listeners) {
-            listener.onEventStopped();      // 3
+            // 3-告诉监听器事件源已停止
+            listener.onEventStopped();
         }
     }
 
-    public static class MyEvent {   // 4
+    // 4-事件类
+    public static class MyEvent {
 
         private Date timeStemp;
         private String message;
