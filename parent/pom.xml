@@ -114,6 +114,7 @@
         <module>../zookeeper</module>
         <module>../mixed</module>
         <module>../rabbitmq</module>
-        <module>../reactor</module>
+        <module>../reactor3</module>
+        <module>../spring5</module>
     </modules>
 </project>
