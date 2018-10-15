@@ -28,7 +28,7 @@ public class CompletableFutureDemo1 implements Runnable {
 		CompletableFuture<Integer> cf = new CompletableFuture<Integer>();
 		new Thread(new CompletableFutureDemo1(cf)).start();
 		//模拟长时间计算过程
-		Thread.sleep(2000);
+//		Thread.sleep(2000);
 		cf.complete(30);
 	}
 }
