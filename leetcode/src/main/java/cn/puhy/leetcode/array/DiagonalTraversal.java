@@ -14,12 +14,8 @@ public class DiagonalTraversal {
         int x = 0;
         int y = 0;
         for (int i = 0; i < max; i++) {
-
-            for (int z = 0; z <= i; z++) {
-                if (y++ == 0) {
-
-                }
-                System.out.println(matrix[x--][y++]);
+            while ((x >= 0 && x < m) && (y >= 0 && y < n)) {
+                System.out.println(matrix[x++][y++]);
             }
         }
 
