@@ -6,3 +6,8 @@ spring:
     url: jdbc:h2:mem:test
     username: root
     password: test
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 1       # 逻辑已删除值
+      logic-not-delete-value: 0   # 逻辑未删除值
