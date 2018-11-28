@@ -116,5 +116,7 @@
         <module>../rabbitmq</module>
         <module>../reactor3</module>
         <module>../spring5</module>
+        <module>../springcloudalibaba</module>
+        <module>../sentinel</module>
     </modules>
 </project>
