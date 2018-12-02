@@ -192,10 +192,11 @@ phy.reflection
 phy.reflection.dynamicAgency-动态代理和AOP
 
 phy.jdk8
-	OptionalTest-Optional类
-	StreamTest      流
-	MapStreamTest   映射流
-	Jdk8InterfaceTest   接口静态方法和默认方法
+	OptionalTest                Optional类
+	StreamTest                  流
+	MapStreamTest               映射流
+	Jdk8InterfaceTest           接口静态方法和默认方法
+	CompletableFutureDemo       CompletableFuture
 
 phy.jdk11
     LocalVariable           局部变量类型推断

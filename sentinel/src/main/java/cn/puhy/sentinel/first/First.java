@@ -23,12 +23,14 @@ public class First {
         List<FlowRule> rules = new ArrayList<>();
         // 定义资源"phy"每秒最多20个请求
         FlowRule rule = new FlowRule();
+        // 资源名
         rule.setResource("phy");
+        // 限流阈值类型，是按照 QPS 还是线程数
         rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
+        // 限流阈值
         rule.setCount(20);
 
         rules.add(rule);
-
         FlowRuleManager.loadRules(rules);
     }
 
@@ -46,7 +48,7 @@ public class First {
                 System.out.println("hello phy");
                 Thread.sleep(49);
             } catch (BlockException e) {
-                // 资源发生了限流会抛出BlockException
+                // 资源访问阻止，被限流或被降级
                 // 进行相应的处理
                 System.out.println("block!");
             } catch (InterruptedException e) {
