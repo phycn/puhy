@@ -51,7 +51,6 @@ cn.puhy.highConcurrency.parallelAndAlgorithm								并行模式与算法
 	cn.puhy.highConcurrency.parallelAndAlgorithm.jdkFuture				JDK的future模式
 	
 cn.puhy.highConcurrency.jdk8				java8与并发
-	CompletableFutureDemo1				完成了就通知
 	StampedLockDemo						改进的读写锁
 	LongAdderDemo						更快的原子类
 	

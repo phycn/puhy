@@ -15,7 +15,7 @@ import java.util.concurrent.TimeoutException;
 public class RabbitConsumer {
 
     private static final String QUEUE_NAME = "queue_demo";
-    private static final String IP = "192.168.47.129";
+    private static final String IP = "192.168.47.136";
     //rabbitmq默认端口为5672
     private static final int PORT = 5672;
 
@@ -48,6 +48,13 @@ public class RabbitConsumer {
             }
         };
         //推模式，由rabbitmq推送
+        //queue 队列名称
+        //autoAck 是否自动确认，一般设为false
+        //consumerTag 消费者标签，用来区分多个消费者
+        //noLocal 设置为true不能将同一个connection中生产者发送的消息传送给这个connection中的消费者
+        //exclusive 是否排他
+        //arguments 消费者其他参数
+        //callback 回调函数
         channel.basicConsume(QUEUE_NAME, consumer);
         //拉模式
 //        channel.basicGet(QUEUE_NAME, false);
