@@ -15,6 +15,7 @@
         <module>springboot-starter-test</module>
     </modules>
 
+
     <dependencyManagement>
         <dependencies>
             <!-- web启动器 -->

@@ -33,3 +33,6 @@ cn.puhy.datastructure.tree              树
 cn.puhy.datastructure.hash              哈希
     MyHashTable                         哈希表
 
+cn.puhy.datastructure.common
+    SquareRoot                          求一个整数的平方根
+

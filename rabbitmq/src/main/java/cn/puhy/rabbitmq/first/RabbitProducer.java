@@ -55,7 +55,7 @@ public class RabbitProducer {
         // arguments 参数
         Map<String, Object> arguments = new HashMap<>();
         //队列中所有消息的过期时间，单位为毫秒
-        arguments.put("x-message-ttl", 6000);
+        arguments.put("x-message-ttl", 60000);
         channel.queueDeclare(QUEUE_NAME, true, false, true, arguments);
         //将交换器与队列通过路由键绑定，第三个参数为绑定键，这里使用的是路由键
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, ROUTING_KEY);
