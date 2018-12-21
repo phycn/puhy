@@ -24,6 +24,7 @@ cn.puhy.datastructure.recursion         递归
     Triangle                            三角数值
     Fibonacci                           斐波那契数列
     TowerOfHanoi                        汉诺塔
+    ResolveInteger                      分解整数
 
 cn.puhy.datastructure.tree              树
     MyBinaryTree                        二叉排序树
