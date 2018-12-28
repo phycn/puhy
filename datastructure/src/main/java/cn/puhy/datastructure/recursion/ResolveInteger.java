@@ -19,20 +19,19 @@ public class ResolveInteger {
             System.out.println(result);
         } else {
             for (int i = 1; i <= total; i++) {
-                if ((i == 1) && result.contains(1)) {
+                if (i == 1 && result.contains(1)) {
                     continue;
                 }
-                ArrayList<Integer> newList = (ArrayList<Integer>) (result.clone());
-                newList.add(i);
-                if (total % i != 0) {
-                    continue;
+                if (total % i == 0) {
+                    ArrayList<Integer> newList = (ArrayList<Integer>) result.clone();
+                    newList.add(i);
+                    resolve(total / i, newList);
                 }
-                resolve(total / i, newList);
             }
         }
     }
 
     public static void main(String[] args) {
-        resolve(9, new ArrayList<>());
+        resolve(4, new ArrayList<>());
     }
 }

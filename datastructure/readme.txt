@@ -36,4 +36,5 @@ cn.puhy.datastructure.hash              哈希
 
 cn.puhy.datastructure.common
     SquareRoot                          求一个整数的平方根
+    BruteForce                          暴力生成指定位数的密码
 

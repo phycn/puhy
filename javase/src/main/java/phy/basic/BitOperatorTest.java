@@ -8,7 +8,7 @@ public class BitOperatorTest {
    
     public static void main(String[] args) {
         
-        //按位与，都为1为1，不相同为0
+        //按位与，都为1为1，否则为0
         //  00000101
         //& 00001001
         //  00000001
