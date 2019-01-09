@@ -100,8 +100,6 @@
         <module>../btrace</module>
         <module>../designpattern</module>
         <module>../highConcurrency2</module>
-        <module>../jarslink</module>
-        <module>../jarslink-a</module>
         <module>../jedis</module>
         <module>../jvm</module>
         <module>../mybatisSourceStudy</module>
@@ -117,6 +115,5 @@
         <module>../reactor3</module>
         <module>../spring5</module>
         <module>../springcloudalibaba</module>
-        <module>../sentinel</module>
     </modules>
 </project>
