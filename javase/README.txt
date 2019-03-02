@@ -197,6 +197,11 @@ phy.jdk8
 	MapStreamTest               映射流
 	Jdk8InterfaceTest           接口静态方法和默认方法
 	CompletableFutureDemo       CompletableFuture
+	StreamDemo1                 内部迭代、中间操作、终止操作、惰性求值
+	StreamDemo2                 流的创建
+	StreamDemo3                 流的中间操作
+	StreamDemo4                 流的终止操作
+	StreamDemo5                 并行流
 
 phy.jdk11
     LocalVariable           局部变量类型推断
@@ -212,3 +217,4 @@ phy.function                函数接口
     MySupplier              Supplier
     MyUnaryOperator         UnaryOperator
     MyBinaryOperator        BinaryOperator
+    CascadeExpression       级联表达式
