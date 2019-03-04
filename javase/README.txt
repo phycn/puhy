@@ -201,7 +201,8 @@ phy.jdk8
 	StreamDemo2                 流的创建
 	StreamDemo3                 流的中间操作
 	StreamDemo4                 流的终止操作
-	StreamDemo5                 并行流
+	StreamDemo5                 并行流,自定义并行流使用的线程池
+	CollectDemo
 
 phy.jdk11
     LocalVariable           局部变量类型推断
