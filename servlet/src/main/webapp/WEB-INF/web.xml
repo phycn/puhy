@@ -3,16 +3,24 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1"
-         metadata-complete="true">
-
+         metadata-complete="false">
+    <!-- metadata-complete为true忽略所有注解，要开启注解必须设置为false -->
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>FirstServlet</servlet-name>
         <servlet-class>cn.puhy.servlet.FirstServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SyncServlet</servlet-name>
+        <servlet-class>cn.puhy.servlet.SyncServlet</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>FirstServlet</servlet-name>
         <url-pattern>/first</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SyncServlet</servlet-name>
+        <url-pattern>/sync</url-pattern>
     </servlet-mapping>
 </web-app>
