@@ -199,7 +199,9 @@ phy.jdk8
 	CompletableFutureDemo       CompletableFuture
 	StreamDemo1                 内部迭代、中间操作、终止操作、惰性求值
 	StreamDemo2                 流的创建
-	StreamDemo3                 流的中间操作
+	StreamDemo3                 流的中间操作，分为无状态操作和有状态操作，无状态为当前操作不需要依赖其他元素
+	                            无状态操作：map、flatMap、filter、peek、unordered
+	                            有状态操作：distinct、sorted、limit、skip
 	StreamDemo4                 流的终止操作
 	StreamDemo5                 并行流,自定义并行流使用的线程池
 	CollectDemo                 收集器，统计，分块，分组

@@ -8,3 +8,4 @@ csii/
 .class
 parent/classes/production/
 .DS_Store
+log/
