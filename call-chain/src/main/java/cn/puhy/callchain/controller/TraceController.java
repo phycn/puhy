@@ -1,5 +1,6 @@
 package cn.puhy.callchain.controller;
 
+import cn.puhy.callchain.TraceContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,6 @@ public class TraceController {
 
     @GetMapping("/trace")
     public void test() {
-        logger.info("puhongyu253399933");
+        logger.info("traceId: " + TraceContext.getTraceId());
     }
 }

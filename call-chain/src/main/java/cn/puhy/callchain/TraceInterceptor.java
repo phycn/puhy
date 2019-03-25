@@ -16,11 +16,9 @@ public class TraceInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String sessionId = request.getSession().getId();
         String traceId = UUID.randomUUID().toString();
         MDC.put("traceId", traceId);
-        MDC.put("sessionId", sessionId);
-        request.getHead
+        TraceContext.addTraceId(traceId);
         return true;
     }
 
@@ -32,5 +30,6 @@ public class TraceInterceptor implements HandlerInterceptor {
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
         MDC.remove("traceId");
+        TraceContext.removeTraceId();
     }
 }
