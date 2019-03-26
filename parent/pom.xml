@@ -114,5 +114,6 @@
         <module>../rabbitmq</module>
         <module>../reactor3</module>
         <module>../dubbo</module>
+        <module>../call-chain</module>
     </modules>
 </project>

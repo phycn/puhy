@@ -1,6 +1,5 @@
 package cn.puhy.callchain;
 
-import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.extension.Activate;
 import com.alibaba.dubbo.rpc.*;
 
@@ -8,7 +7,10 @@ import com.alibaba.dubbo.rpc.*;
  * @author puhongyu
  * 2019-03-25 23:05
  */
-@Activate(group = {Constants.CONSUMER, Constants.PROVIDER} , order = -1000)
+@Activate(
+        group = {"consumer"},
+        value = {"myTrace"}
+)
 public class MyTraceFilter implements Filter {
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
