@@ -9,3 +9,5 @@ csii/
 parent/classes/production/
 .DS_Store
 log/
+bin/
+test/

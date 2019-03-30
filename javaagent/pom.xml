@@ -22,6 +22,8 @@
         </dependency>
     </dependencies>
 
+
+
     <build>
         <plugins>
             <plugin>
@@ -31,12 +33,25 @@
                 <configuration>
                     <archive>
                         <manifestEntries>
+                            <!-- agent启动class -->
                             <Premain-Class>cn.puhy.javaagent.FirstAgent</Premain-Class>
+                            <!-- agent所依赖的jar路径 -->
                             <Boot-Class-Path>javassist-3.22.0-GA.jar</Boot-Class-Path>
+                            <!-- 是否允许重新定义class -->
                             <Can-Redefine-Classes>false</Can-Redefine-Classes>
+                            <!-- 是否允许重置Class，重置后相当于class 从classLoade中清除，下次有需要的时候会重新装载，也会重新走transform流程 -->
+                            <Can-Retransform-Classes>false</Can-Retransform-Classes>
                         </manifestEntries>
                     </archive>
                     <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
