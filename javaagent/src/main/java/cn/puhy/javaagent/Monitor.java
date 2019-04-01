@@ -30,6 +30,7 @@ public class Monitor {
         targetClass.toClass();
 //		BitStringUtil util=new BitStringUtil();
         StringUtil util = new StringUtil();
-        util.addString(1000);
+        System.out.println(util.addString(1000));
+
     }
 }
