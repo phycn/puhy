@@ -1,0 +1,53 @@
+2019-04-23 17:22:54.984  INFO 5880 --- [main] com.alipay.sofa.common.log               : Sofa-Middleware-Log SLF4J : Actual logging.path is [ /Users/puhongyu/phy/idea/sofa/sofa-boot/logs ]
+2019-04-23 17:22:54.988  INFO 5880 --- [main] com.alipay.sofa.common.log               : Sofa-Middleware-Log SLF4J : Actual binding is of type [ com.alipay.sofa.infra Logback ]
+2019-04-23 17:22:55.020  INFO 5880 --- [main] com.alipay.sofa.common.log               : Sofa-Middleware-Log SLF4J : Actual logging.path is [ /Users/puhongyu/phy/idea/sofa/sofa-boot/logs ]
+2019-04-23 17:22:55.021  INFO 5880 --- [main] com.alipay.sofa.common.log               : Sofa-Middleware-Log SLF4J : Actual binding is of type [ com.alipay.sofa.healthcheck Logback ]
+2019-04-23 17:23:05.052  INFO 5880 --- [main] cn.puhy.sofaboot.SofaBootApplication     : Starting SofaBootApplication on phyMacBook-Pro.local with PID 5880 (/Users/puhongyu/phy/idea/sofa/sofa-boot/target/classes started by puhongyu in /Users/puhongyu/phy/idea/parent)
+2019-04-23 17:23:05.053  INFO 5880 --- [main] cn.puhy.sofaboot.SofaBootApplication     : No active profile set, falling back to default profiles: default
+2019-04-23 17:23:05.991  INFO 5880 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-23 17:23:06.005  INFO 5880 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-23 17:23:06.005  INFO 5880 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-04-23 17:23:06.011  INFO 5880 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/puhongyu/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-04-23 17:23:06.073  INFO 5880 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-23 17:23:06.073  INFO 5880 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 963 ms
+2019-04-23 17:23:06.330  INFO 5880 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-23 17:23:06.330  INFO 5880 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-23 17:23:06.330  INFO 5880 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-23 17:23:06.330  INFO 5880 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-04-23 17:23:06.330  INFO 5880 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-23 17:23:06.330  INFO 5880 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-23 17:23:06.331  INFO 5880 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-23 17:23:06.470  INFO 5880 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-23 17:23:06.739  INFO 5880 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoint(s) beneath base path '/actuator'
+2019-04-23 17:23:06.815  INFO 5880 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-23 17:23:06.818  INFO 5880 --- [main] cn.puhy.sofaboot.SofaBootApplication     : Started SofaBootApplication in 17.074 seconds (JVM running for 22.62)
+2019-04-23 17:23:06.897  INFO 5880 --- [RMI TCP Connection(4)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-23 17:23:06.897  INFO 5880 --- [RMI TCP Connection(4)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-04-23 17:23:06.903  INFO 5880 --- [RMI TCP Connection(4)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2019-04-23 17:24:42.985  INFO 5880 --- [Thread-38] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2019-04-23 17:29:34.164  INFO 5903 --- [main] com.alipay.sofa.common.log               : Sofa-Middleware-Log SLF4J : Actual logging.path is [ ./logs ]
+2019-04-23 17:29:34.171  INFO 5903 --- [main] com.alipay.sofa.common.log               : Sofa-Middleware-Log SLF4J : Actual binding is of type [ com.alipay.sofa.infra Logback ]
+2019-04-23 17:29:34.217  INFO 5903 --- [main] com.alipay.sofa.common.log               : Sofa-Middleware-Log SLF4J : Actual logging.path is [ ./logs ]
+2019-04-23 17:29:34.218  INFO 5903 --- [main] com.alipay.sofa.common.log               : Sofa-Middleware-Log SLF4J : Actual binding is of type [ com.alipay.sofa.healthcheck Logback ]
+2019-04-23 17:29:44.244  INFO 5903 --- [main] cn.puhy.sofaboot.SofaBootApplication     : Starting SofaBootApplication on phyMacBook-Pro.local with PID 5903 (/Users/puhongyu/phy/idea/sofa/sofa-boot/target/classes started by puhongyu in /Users/puhongyu/phy/idea/sofa/sofa-boot)
+2019-04-23 17:29:44.245  INFO 5903 --- [main] cn.puhy.sofaboot.SofaBootApplication     : No active profile set, falling back to default profiles: default
+2019-04-23 17:29:45.354  INFO 5903 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-04-23 17:29:45.376  INFO 5903 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-23 17:29:45.377  INFO 5903 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/9.0.12
+2019-04-23 17:29:45.387  INFO 5903 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/puhongyu/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+2019-04-23 17:29:45.461  INFO 5903 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-23 17:29:45.462  INFO 5903 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1184 ms
+2019-04-23 17:29:45.789  INFO 5903 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-23 17:29:45.789  INFO 5903 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-23 17:29:45.789  INFO 5903 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-23 17:29:45.789  INFO 5903 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'formContentFilter' to: [/*]
+2019-04-23 17:29:45.790  INFO 5903 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-23 17:29:45.790  INFO 5903 --- [main] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-23 17:29:45.790  INFO 5903 --- [main] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-23 17:29:46.237  INFO 5903 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-04-23 17:29:46.481  INFO 5903 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoint(s) beneath base path '/actuator'
+2019-04-23 17:29:46.567  INFO 5903 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-04-23 17:29:46.573  INFO 5903 --- [main] cn.puhy.sofaboot.SofaBootApplication     : Started SofaBootApplication in 17.811 seconds (JVM running for 266.871)
+2019-04-23 17:30:05.144  INFO 5903 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2019-04-23 17:30:05.145  INFO 5903 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2019-04-23 17:30:05.153  INFO 5903 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms

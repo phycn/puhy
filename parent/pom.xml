@@ -115,5 +115,6 @@
         <module>../reactor3</module>
         <module>../dubbo</module>
         <module>../call-chain</module>
+        <module>../apollo</module>
     </modules>
 </project>
