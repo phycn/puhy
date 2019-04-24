@@ -1,0 +1,112 @@
+2019-04-24 16:05:10,498 INFO  main                             - SOFABoot Runtime Starting!
+2019-04-24 16:05:20,906 INFO  main                             - ++++++++++++++++++ ModelCreatingStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:05:20,910 INFO  main                             - ++++++++++++++++++ ModelCreatingStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:05:20,910 INFO  main                             - ++++++++++++++++++ SpringContextInstallStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:05:20,911 INFO  main                             - 
+All activated module list(2) >>>>>>>
+  ├─ cn.puhy.sofaboot.isle.sofaboot-isle-consumer
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-provider
+
+Modules that could install(2) >>>>>>>
+  ├─ cn.puhy.sofaboot.isle.sofaboot-isle-provider
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-consumer
+
+2019-04-24 16:05:20,913 INFO  main                             - ++++++++++++++++++ SpringContextInstallStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:05:20,914 INFO  main                             - ++++++++++++++++++ ModuleLogOutputStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:05:20,914 INFO  main                             - 
+Spring context initialize success module list(0) >>>>>>> [totalTime = 0 ms, realTime = 0 ms]
+
+Spring context initialize failed module list(0) >>>>>>>
+
+Spring bean load time cost list(0) >>>>>>> [totalTime = 0 ms, realTime = 0 ms]
+
+2019-04-24 16:05:20,914 INFO  main                             - ++++++++++++++++++ ModuleLogOutputStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:08:19,464 INFO  main                             - SOFABoot Runtime Starting!
+2019-04-24 16:08:30,324 INFO  main                             - Registering component: reference:cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl#414599042
+2019-04-24 16:08:30,325 INFO  main                             -  >>In Binding [jvm] Begins - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:08:30,326 INFO  main                             -  >>In Binding [jvm] Ends - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:08:30,583 INFO  main                             - ++++++++++++++++++ ModelCreatingStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:08:30,587 INFO  main                             - ++++++++++++++++++ ModelCreatingStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:08:30,587 INFO  main                             - ++++++++++++++++++ SpringContextInstallStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:08:30,588 INFO  main                             - 
+All activated module list(2) >>>>>>>
+  ├─ cn.puhy.sofaboot.isle.sofaboot-isle-consumer
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-provider
+
+Modules that could install(2) >>>>>>>
+  ├─ cn.puhy.sofaboot.isle.sofaboot-isle-provider
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-consumer
+
+2019-04-24 16:08:30,590 INFO  main                             - ++++++++++++++++++ SpringContextInstallStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:08:30,590 INFO  main                             - ++++++++++++++++++ ModuleLogOutputStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:08:30,590 INFO  main                             - 
+Spring context initialize success module list(0) >>>>>>> [totalTime = 0 ms, realTime = 0 ms]
+
+Spring context initialize failed module list(0) >>>>>>>
+
+Spring bean load time cost list(0) >>>>>>> [totalTime = 0 ms, realTime = 0 ms]
+
+2019-04-24 16:08:30,590 INFO  main                             - ++++++++++++++++++ ModuleLogOutputStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:09:19,847 INFO  main                             - SOFABoot Runtime Starting!
+2019-04-24 16:09:30,706 INFO  main                             - Registering component: reference:cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl#414599042
+2019-04-24 16:09:30,706 INFO  main                             -  >>In Binding [jvm] Begins - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:09:30,708 INFO  main                             -  >>In Binding [jvm] Ends - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:09:30,971 INFO  main                             - ++++++++++++++++++ ModelCreatingStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:09:30,975 INFO  main                             - ++++++++++++++++++ ModelCreatingStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:09:30,975 INFO  main                             - ++++++++++++++++++ SpringContextInstallStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:09:30,976 INFO  main                             - 
+All activated module list(2) >>>>>>>
+  ├─ cn.puhy.sofaboot.isle.sofaboot-isle-consumer
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-provider
+
+Modules that could install(2) >>>>>>>
+  ├─ cn.puhy.sofaboot.isle.sofaboot-isle-provider
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-consumer
+
+2019-04-24 16:09:30,978 INFO  main                             - ++++++++++++++++++ SpringContextInstallStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:09:30,979 INFO  main                             - ++++++++++++++++++ ModuleLogOutputStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:09:30,979 INFO  main                             - 
+Spring context initialize success module list(0) >>>>>>> [totalTime = 0 ms, realTime = 0 ms]
+
+Spring context initialize failed module list(0) >>>>>>>
+
+Spring bean load time cost list(0) >>>>>>> [totalTime = 0 ms, realTime = 0 ms]
+
+2019-04-24 16:09:30,979 INFO  main                             - ++++++++++++++++++ ModuleLogOutputStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:29:48,887 INFO  main                             - SOFABoot Runtime Starting!
+2019-04-24 16:29:59,738 INFO  main                             - Registering component: reference:cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl#414599042
+2019-04-24 16:29:59,739 INFO  main                             -  >>In Binding [jvm] Begins - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:29:59,740 INFO  main                             -  >>In Binding [jvm] Ends - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:29:59,995 INFO  main                             - ++++++++++++++++++ ModelCreatingStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:29:59,999 INFO  main                             - ++++++++++++++++++ ModelCreatingStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:29:59,999 INFO  main                             - ++++++++++++++++++ SpringContextInstallStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:30:00,000 INFO  main                             - 
+All activated module list(2) >>>>>>>
+  ├─ cn.puhy.sofaboot.isle.sofaboot-isle-consumer
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-provider
+
+Modules that could install(2) >>>>>>>
+  ├─ cn.puhy.sofaboot.isle.sofaboot-isle-provider
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-consumer
+
+2019-04-24 16:30:00,001 INFO  main                             - Start install sofaboot isle demos module: cn.puhy.sofaboot.isle.sofaboot-isle-provider
+2019-04-24 16:30:00,111 INFO  sofa-module-start-cn.puhy.sofaboot.isle.sofaboot-isle-provider - Begin refresh Spring Application Context of module cn.puhy.sofaboot.isle.sofaboot-isle-provider of application sofaboot isle demo.
+2019-04-24 16:30:00,133 INFO  sofa-module-start-cn.puhy.sofaboot.isle.sofaboot-isle-provider - Registering component: service:cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl
+2019-04-24 16:30:00,133 INFO  sofa-module-start-cn.puhy.sofaboot.isle.sofaboot-isle-provider -  <<PreOut Binding [jvm] Begins - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:30:00,133 INFO  sofa-module-start-cn.puhy.sofaboot.isle.sofaboot-isle-provider -  <<PreOut Binding [jvm] Ends - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:30:00,133 INFO  sofa-module-start-cn.puhy.sofaboot.isle.sofaboot-isle-provider -  <<Out Binding [jvm] Begins - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:30:00,133 INFO  sofa-module-start-cn.puhy.sofaboot.isle.sofaboot-isle-provider -  <<Out Binding [jvm] Ends - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl.
+2019-04-24 16:30:00,133 INFO  sofa-module-start-cn.puhy.sofaboot.isle.sofaboot-isle-provider - Register Service - cn.puhy.sofaboot.isle.api.MySofaService:mySofaServiceImpl
+2019-04-24 16:30:00,138 INFO  main                             - ++++++++++++++++++ SpringContextInstallStage of sofaboot isle demo End +++++++++++++++++
+2019-04-24 16:30:00,138 INFO  main                             - ++++++++++++++++++ ModuleLogOutputStage of sofaboot isle demo Start +++++++++++++++++
+2019-04-24 16:30:00,138 INFO  main                             - 
+Spring context initialize success module list(1) >>>>>>> [totalTime = 25 ms, realTime = 25 ms]
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-provider [25 ms]
+       `---/Users/puhongyu/phy/idea/sofa/sofaboot/sofaboot-isle/sofaboot-isle-provider/target/classes/META-INF/spring/service-provide.xml
+
+Spring context initialize failed module list(0) >>>>>>>
+
+Spring bean load time cost list(1) >>>>>>> [totalTime = 25 ms, realTime = 25 ms]
+  └─ cn.puhy.sofaboot.isle.sofaboot-isle-provider [25 ms]
+
+2019-04-24 16:30:00,138 INFO  main                             - ++++++++++++++++++ ModuleLogOutputStage of sofaboot isle demo End +++++++++++++++++

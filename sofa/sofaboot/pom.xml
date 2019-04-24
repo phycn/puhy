@@ -2,19 +2,18 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>sofa</artifactId>
+        <groupId>cn.puhy.study</groupId>
+        <version>1.0</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.alipay.sofa</groupId>
-        <artifactId>sofaboot-dependencies</artifactId>
-        <version>3.1.0</version>
-    </parent>
-
-    <groupId>cn.puhy.study</groupId>
-    <artifactId>sofa</artifactId>
+    <artifactId>sofaboot</artifactId>
     <version>1.0</version>
     <modules>
-        <module>sofaboot</module>
+        <module>sofaboot-isle</module>
     </modules>
     <packaging>pom</packaging>
+
 </project>
