@@ -9,10 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sofaboot</artifactId>
-    <version>1.0</version>
-    <modules>
-        <module>sofaboot-isle</module>
-    </modules>
+    <artifactId>sofarpc</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>sofarpc-api</module>
+        <module>sofarpc-provider</module>
+        <module>sofarpc-consumer</module>
+    </modules>
 </project>
