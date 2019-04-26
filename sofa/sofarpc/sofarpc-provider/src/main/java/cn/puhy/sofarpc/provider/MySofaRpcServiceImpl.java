@@ -9,12 +9,19 @@ import org.springframework.stereotype.Component;
  * @author puhongyu
  * 2019/4/25 10:56
  */
-@SofaService(interfaceType = MySofaRpcService.class, bindings = { @SofaServiceBinding(bindingType = "bolt") })
+@SofaService(interfaceType = MySofaRpcService.class, bindings = {@SofaServiceBinding(bindingType = "bolt"),
+        @SofaServiceBinding(bindingType = "rest")})
 @Component
 public class MySofaRpcServiceImpl implements MySofaRpcService {
     @Override
     public String sayHello() {
         System.out.println("invoke MySofaRpcService");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("完成...");
         return "hello phy!!";
     }
 }
