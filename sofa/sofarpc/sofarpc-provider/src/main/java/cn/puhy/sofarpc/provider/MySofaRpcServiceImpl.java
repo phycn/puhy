@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
  * 2019/4/25 10:56
  */
 @SofaService(interfaceType = MySofaRpcService.class, bindings = {@SofaServiceBinding(bindingType = "bolt"),
-        @SofaServiceBinding(bindingType = "rest")})
+        @SofaServiceBinding(bindingType = "rest"),
+        @SofaServiceBinding(bindingType = "dubbo")})
 @Component
 public class MySofaRpcServiceImpl implements MySofaRpcService {
     @Override
