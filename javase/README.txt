@@ -217,6 +217,9 @@ phy.jdk11
     StreamReinforce         Stream加强
     HttpClient              http客户端
 
+phy.jdk12
+    SwitchDemo              switch枚举
+
 phy.function                函数接口
     FunctionDemo            Function
     MyPredicate             Predicate
