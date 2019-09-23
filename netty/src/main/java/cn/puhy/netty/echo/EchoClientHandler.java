@@ -12,8 +12,7 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     // 从服务器接收到消息时被调用
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) throws Exception {
-        System.out.println("客户端收到的消息: " + msg.toString());
-        ctx.writeAndFlush("haha");
+        System.out.println("客户端收到的消息: " + msg.toString(CharsetUtil.UTF_8));
     }
 
     // 连接建立之后将被调用

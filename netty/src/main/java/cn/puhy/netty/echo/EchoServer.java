@@ -28,7 +28,7 @@ public class EchoServer {
                     });
             // 绑定服务器，调用sync()阻塞直到绑定完成
             ChannelFuture channelFuture = bootstrap.bind().sync();
-            // 关闭Channel，直到完成
+            // 阻塞main线程，不然会直接退出
             channelFuture.channel().closeFuture().sync();
         } finally {
             // 释放资源
