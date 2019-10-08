@@ -1,5 +1,7 @@
 package cn.puhy.zookeeper;
 
+import java.io.File;
+
 /**
  * @author puhongyu
  * 2018/4/28 21:42
@@ -19,6 +21,10 @@ public class DistributeLockTest implements Runnable {
     }
 
     public static void main(String[] args) throws InterruptedException {
+
+        File file = new File("");
+        file.listFiles(f -> f.getName().endsWith(".java"));
+
         DistributeLockTest lockTest = new DistributeLockTest();
         Thread thread = new Thread(lockTest);
         Thread thread2 = new Thread(lockTest);
