@@ -35,7 +35,7 @@
         <!-- targetPackage 生成实体类存放的包名 -->
         <!-- targetProject 指定路径 -->
         <javaModelGenerator targetPackage="${model.package}"
-                            targetProject="F:\gitRepository\puhy\mybatis-generator\src\main\java">
+                            targetProject="${target.path}">
             <!-- constructorBased 使用构造方法入参，默认为false -->
             <property name="constructorBased" value="false"/>
             <!-- 根据catalog和schema生成子包，如果为false直接使用targetPackage，默认为false -->
@@ -47,15 +47,15 @@
         </javaModelGenerator>
 
         <!--生成xml文件-->
-        <sqlMapGenerator targetPackage="${xml.package}"
-                         targetProject="F:\gitRepository\puhy\mybatis-generator\src\main\resources">
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="${target.path}">
             <property name="enableSubPackage" value="false"/>
         </sqlMapGenerator>
 
         <!-- 生成Mapper接口 -->
         <!-- type XMLMAPPER 所有的方法都在XML中 -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="${interface.package}"
-                             targetProject="F:\gitRepository\puhy\mybatis-generator\src\main\java"/>
+                             targetProject="${target.path}"/>
 
         <!-- tableName 表名，全部表为% -->
         <!-- domainObjectName 生成对象的基本名称 -->
