@@ -9,7 +9,7 @@ import java.io.IOException;
 public class SimpleLexicalAnalyzer {
     public static void main(String[] args) throws IOException {
         // 要解析的语句
-        String script = "int inta = 291";
+        String script = "int int = 291";
         int length = script.length();
         CharArrayReader reader = new CharArrayReader(script.toCharArray());
         int iChar;
@@ -89,7 +89,6 @@ public class SimpleLexicalAnalyzer {
                     break;
             }
         }
-//        System.out.println(sb.toString());
     }
 
     /**
