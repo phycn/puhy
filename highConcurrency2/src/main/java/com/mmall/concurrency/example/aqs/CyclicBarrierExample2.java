@@ -34,9 +34,9 @@ public class CyclicBarrierExample2 {
         Thread.sleep(1000);
         log.info("{} is ready", threadNum);
         try {
-            barrier.await(2000, TimeUnit.MILLISECONDS);
+            barrier.await(900, TimeUnit.MILLISECONDS);
         } catch (Exception e) {
-//            log.warn("BarrierException", e);
+            log.warn("BarrierException", e);
         }
         log.info("{} continue", threadNum);
     }

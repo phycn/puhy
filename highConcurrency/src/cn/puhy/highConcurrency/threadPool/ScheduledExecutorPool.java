@@ -10,7 +10,7 @@ public class ScheduledExecutorPool implements Runnable {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(1);
 			System.out.println(System.currentTimeMillis());
 		} catch (InterruptedException e) {
 			e.printStackTrace();

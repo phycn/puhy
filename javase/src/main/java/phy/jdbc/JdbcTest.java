@@ -12,12 +12,13 @@ public class JdbcTest {
         //会自动关闭资源
         try {
         	Class.forName("oracle.jdbc.driver.OracleDriver");
-        	Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@172.16.236.150:1521/xe", "td", "td");
+        	Connection conn = DriverManager.getConnection("jdbc:mysql://rm-bp14y74mzukx08319.mysql.rds.aliyuncs.com:3306/sheer",
+                    "mt", "pbcMysqlPwd668!");
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from sys_user");
+            ResultSet rs = stmt.executeQuery("select DISTINCT userId from t_star_record");
             //System.out.println(rs.getString(1) + " " + rs.getString(2));
             while (rs.next()) {
-                System.out.println(rs.getString(1) + " " + rs.getString(2));
+                System.out.println(rs.getString(1));
             }
         }
         catch(Exception e) {
