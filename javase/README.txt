@@ -206,6 +206,8 @@ phy.jdk8
 	StreamDemo5                 并行流,自定义并行流使用的线程池
 	CollectDemo                 收集器，统计，分块，分组
 
+	LocalDateTimeTest           时间API
+
 phy.jdk9
     FlowDemo1
     FlowDemo2
@@ -216,6 +218,9 @@ phy.jdk11
     CollectionReinforce     集合加强
     StreamReinforce         Stream加强
     HttpClient              http客户端
+
+phy.jdk12
+    SwitchDemo              switch枚举
 
 phy.function                函数接口
     FunctionDemo            Function

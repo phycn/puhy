@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 引入外部属性文件，resource指定classpath下的属性文件，url指定文件系统上的特定位置 -->
+    <properties resource="" url=""/>
+    <!-- 可以指定驱动的路径 -->
+    <classPathEntry location=""/>
+
+    <!-- defaultModelType 定义如何生成实体类，flat为每张表只生成一个实体类 -->
+    <!-- targetRuntime 指定生成的代码的运行时环境 -->
+    <!-- introspectedColumnImpl 指定扩展org.mybatis.generator.api.IntrospectedColumn类的实现类 -->
+    <context id="mybatis3" targetRuntime="MyBatis3" defaultModelType="flat" introspectedColumnImpl="">
+
+        <!-- autoDelimitKeywords 是否给关键字添加分隔符 -->
+        <property name="autoDelimitKeywords" value="true"/>
+        <!-- beginningDelimiter 前置分隔符 -->
+        <property name="beginningDelimiter" value="`"/>
+        <!-- endingDelimiter 后置分隔符 -->
+        <property name="endingDelimiter" value="`"/>
+        <!-- java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- 插件 -->
+        <!--        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>-->
+        <!--        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
+
+        <!-- 生成注释，type指定org.mybatis.generator.api.CommentGenerator的实现类，参考DefaultCommentGenerator -->
+        <commentGenerator type="">
+            <!-- suppressAllComments 阻止生成注释，默认为false -->
+            <property name="suppressAllComments" value="false"/>
+            <!-- suppressDate 阻止生成的注释包含时间戳，默认为false -->
+            <property name="suppressDate" value="false"/>
+            <!-- addRemarkComments 注释是否添加数据库表的备注信息，默认为false -->
+            <property name="addRemarkComments" value="false"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="${driver}"
+                connectionURL="${url}"
+                userId="${username}"
+                password="${password}"/>
+
+        <!-- JDBC类型和java类型转换 -->
+        <!--        <javaTypeResolver type="">-->
+        <!--            <property name="" value=""/>-->
+        <!--        </javaTypeResolver>-->
+
+        <!-- 生成实体类 -->
+        <!-- targetPackage 生成实体类存放的包名 -->
+        <!-- targetProject 指定路径 -->
+        <javaModelGenerator targetPackage="com.test.mybatis.generator.model"
+                            targetProject="E:\Project\mybatisgenertor\src\main\java">
+            <!-- constructorBased 使用构造方法入参，默认为false -->
+            <property name="constructorBased" value="false"/>
+            <!-- 根据catalog和schema生成子包，如果为false直接使用targetPackage，默认为false -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 实体类是否可变，设置为true不会生成setter方法，默认为false -->
+            <property name="immutable" value="false"/>
+            <!-- 设置实体类的基类 -->
+            <property name="rootClass" value=""/>
+            <!-- 对查询结果进行trim操作，默认为false -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--生成xml文件-->
+        <sqlMapGenerator targetPackage="com.test.mybatis.generator.dao.mapper"
+                         targetProject="E:\Project\mybatisgenertor\src\main\java">
+            <property name="enableSubPackage" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成Mapper接口 -->
+        <!-- type XMLMAPPER 所有的方法都在XML中 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.test.mybatis.generator.dao"
+                             targetProject="E:\Project\mybatisgenertor\src\main\java"/>
+
+        <!-- tableName 表名，全部表为% -->
+        <!-- domainObjectName 生成对象的基本名称 -->
+        <!-- schema 数据库的schema -->
+        <!-- catalog 数据库的catalog -->
+        <!-- alias 查询语句表的别名 -->
+        <!-- enableXXX 指定是否生成对应的XXX语句 -->
+        <!-- selectByPrimaryKeyQueryId -->
+        <!-- selectByExampleQueryId -->
+        <!-- modelType 与context的defaultModelType一样，针对表的配置 -->
+        <!-- escapeWildcards 对通配符(_和%)进行转义，默认为false -->
+        <!-- delimitIdentifiers 是否给标识符增加分隔符，默认为false，当 catalog、schema或tableName中包含空白时，默认为true -->
+        <!-- delimitAllColumns 是否对所有列添加分隔符，默认为false -->
+        <table tableName="test" domainObjectName="Test">
+            <!-- 使用构造方法入参，默认为false -->
+            <property name="constructorBased" value="false"/>
+            <!-- 生成的SQL中的表名将不会包含schema和catalog前缀 -->
+            <property name="ignoreQualifiersAtRuntime" value="false"/>
+            <!-- 实体类是否可变，设置为true不会生成setter方法，默认为false -->
+            <property name="immutable" value="false"/>
+            <!-- 用于配置是否只生成实体类。如果设置为true，就不会有Mapper接口，
+                 同时还会覆盖属性中的enableXXX方法，井且不会生成任何CRUD方法。如果配置
+                 了sqlMapGenerator，并且modelOnly为true，那么XML映射文件中只有实体
+                 对象的映射标签(resultMap) -->
+            <property name="modelOnly" value="false"/>
+            <!-- 设置实体类的基类 -->
+            <property name="rootClass" value=""/>
+            <!-- 运行时的catalog，当生成表和运行环境表的catalog不一样时，可以使用该属性进行配置 -->
+            <property name="runtimeCatalog" value=""/>
+            <!-- 运行时的schema，当生成表和运行环境表的schema不一样时，可以使用该属性进行配置 -->
+            <property name="runtimeSchema" value=""/>
+            <!-- 运行时的tableName，当生成表和运行环境表的tableName不一样时，可以使用该属性进行配置 -->
+            <property name="runtimeTableName" value=""/>
+            <!-- 为true从数据库获取的列名作为实体对象属性，为false转换为驼峰形式 -->
+            <property name="useActualColumnNames" value="false"/>
+
+            <!-- 指定自动生成主键 -->
+            <!-- column 生成列的列名 -->
+            <!-- sqlStatement 返回新值的SQL语句 -->
+            <generatedKey column="id" sqlStatement="MySQL" type="post" identity="true"/>
+
+            <!-- 对列进行重命名，searchString为正则表达式 -->
+            <columnRenamingRule searchString="" replaceString="" />
+
+            <!-- column 重写的列名 -->
+            <!-- property 要是用的名称 -->
+            <!-- javaType java类型 -->
+            <!-- jdbcType jdbc类型 -->
+            <columnOverride column="column_one" property="columnOne"
+                            javaType="java.lang.String" jdbcType="VARCHAR"/>
+
+            <!-- 忽略的列 -->
+            <ignoreColumn column="column_two" />
+        </table>
+    </context>
+
+</generatorConfiguration>

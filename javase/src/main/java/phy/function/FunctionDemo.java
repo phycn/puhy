@@ -28,6 +28,15 @@ public class FunctionDemo {
         //compose为先将参数进行处理下
         myFunction.printName(nameFormat.compose(s -> "[" + s + "]"));
         //andThen为将参数后置处理下
-        myFunction.printName(nameFormat.andThen(s -> "--->" + s));
+        myFunction.printName(nameFormat.andThen(s -> "--->" + s).andThen(new phy()));
+
+        myFunction.printName(new phy());
+    }
+}
+
+class phy implements Function<String, String> {
+    @Override
+    public String apply(String s) {
+        return "(" + s + ")";
     }
 }
